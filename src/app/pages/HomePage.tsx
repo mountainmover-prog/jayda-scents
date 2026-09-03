@@ -3,6 +3,27 @@ import { ProductCard } from '../components/ProductCard';
 import { perfumes } from '../data/perfumes';
 import { Link } from 'react-router';
 
+const categories = [
+  {
+    to: '/women',
+    label: 'WOMEN',
+    image:
+      'url(https://images.unsplash.com/photo-1508771400123-e194ad75c0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwcGVyZnVtZSUyMGJvdHRsZSUyMHBpbmt8ZW58MXx8fHwxNzcxNDkwOTE0fDA&ixlib=rb-4.1.0&q=80&w=1080)',
+  },
+  {
+    to: '/men',
+    label: 'MEN',
+    image:
+      'url(https://images.unsplash.com/photo-1554948419-1939083b12cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBwZXJmdW1lJTIwYm90dGxlJTIwYmxhY2t8ZW58MXx8fHwxNzcxNTY5NzY2fDA&ixlib=rb-4.1.0&q=80&w=1080)',
+  },
+  {
+    to: '/unisex',
+    label: 'UNISEX',
+    image:
+      'url(https://images.unsplash.com/photo-1761778304143-4c89e7dd2457?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNpZ25lciUyMHBlcmZ1bWUlMjBib3R0bGUlMjB3aGl0ZXxlbnwxfHx8fDE3NzE1MzA5MDh8MA&ixlib=rb-4.1.0&q=80&w=1080)',
+  },
+];
+
 export function HomePage() {
   const featuredPerfumes = perfumes.slice(0, 4);
 
@@ -18,60 +39,26 @@ export function HomePage() {
           </h2>
           <div className="w-12 h-px bg-gold mx-auto mb-12" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link
-              to="/women"
-              className="relative h-72 bg-charcoal rounded-lg overflow-hidden group"
-            >
-              <div
-                className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                style={{
-                  backgroundImage:
-                    'url(https://images.unsplash.com/photo-1508771400123-e194ad75c0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwcGVyZnVtZSUyMGJvdHRsZSUyMHBpbmt8ZW58MXx8fHwxNzcxNDkwOTE0fDA&ixlib=rb-4.1.0&q=80&w=1080)',
-                }}
+            {categories.map((cat) => (
+              <Link
+                key={cat.to}
+                to={cat.to}
+                className="relative h-72 rounded-lg overflow-hidden group"
               >
-                <div className="absolute inset-0 bg-ink/50" />
-              </div>
-              <div className="relative h-full flex flex-col items-center justify-center">
-                <h3 className="font-display text-2xl text-cream tracking-wide">WOMEN</h3>
-                <span className="mt-2 text-[10px] tracking-[0.16em] text-gold uppercase">Explore</span>
-              </div>
-            </Link>
-            <Link
-              to="/men"
-              className="relative h-72 bg-charcoal rounded-lg overflow-hidden group"
-            >
-              <div
-                className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                style={{
-                  backgroundImage:
-                    'url(https://images.unsplash.com/photo-1554948419-1939083b12cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBwZXJmdW1lJTIwYm90dGxlJTIwYmxhY2t8ZW58MXx8fHwxNzcxNTY5NzY2fDA&ixlib=rb-4.1.0&q=80&w=1080)',
-                }}
-              >
-                <div className="absolute inset-0 bg-ink/50" />
-              </div>
-              <div className="relative h-full flex flex-col items-center justify-center">
-                <h3 className="font-display text-2xl text-cream tracking-wide">MEN</h3>
-                <span className="mt-2 text-[10px] tracking-[0.16em] text-gold uppercase">Explore</span>
-              </div>
-            </Link>
-            <Link
-              to="/unisex"
-              className="relative h-72 bg-charcoal rounded-lg overflow-hidden group"
-            >
-              <div
-                className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                style={{
-                  backgroundImage:
-                    'url(https://images.unsplash.com/photo-1761778304143-4c89e7dd2457?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNpZ25lciUyMHBlcmZ1bWUlMjBib3R0bGUlMjB3aGl0ZXxlbnwxfHx8fDE3NzE1MzA5MDh8MA&ixlib=rb-4.1.0&q=80&w=1080)',
-                }}
-              >
-                <div className="absolute inset-0 bg-ink/50" />
-              </div>
-              <div className="relative h-full flex flex-col items-center justify-center">
-                <h3 className="font-display text-2xl text-cream tracking-wide">UNISEX</h3>
-                <span className="mt-2 text-[10px] tracking-[0.16em] text-gold uppercase">Explore</span>
-              </div>
-            </Link>
+                <div
+                  className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                  style={{ backgroundImage: cat.image }}
+                />
+                <div
+                  className="absolute inset-0 transition-all duration-300 group-hover:bg-ink/60"
+                  style={{ background: 'rgba(11,9,7,0.45)' }}
+                />
+                <div className="relative h-full flex flex-col items-center justify-center">
+                  <h3 className="font-display text-2xl text-cream tracking-wide">{cat.label}</h3>
+                  <span className="mt-2 text-[10px] tracking-[0.16em] text-gold uppercase">Explore</span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -106,7 +93,7 @@ export function HomePage() {
             <div>
               <h3 className="font-display text-lg text-cream mb-4">ABOUT</h3>
               <p className="text-sm text-cream/60 font-light leading-relaxed">
-                Discover luxury fragrances from the world's finest perfume houses.
+                Eau de parfum and pure perfume oils, blended and bottled in Zanzibar.
               </p>
             </div>
             <div>

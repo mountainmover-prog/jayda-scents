@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import { Perfume } from '../types';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { formatPrice } from '../utils/format';
+import { formatPrice, formatType } from '../utils/format';
 
 interface ProductCardProps {
   perfume: Perfume;
@@ -18,7 +18,11 @@ export function ProductCard({ perfume }: ProductCardProps) {
         />
       </div>
       <div className="mt-4">
-        <p className="text-[10px] text-muted tracking-[0.16em] uppercase">{perfume.brand}</p>
+        <div className="flex items-center gap-2">
+          <p className="text-[10px] text-muted tracking-[0.16em] uppercase">{perfume.brand}</p>
+          <span className="text-rule">·</span>
+          <p className="text-[10px] text-bronze tracking-[0.16em] uppercase">{formatType(perfume.type)}</p>
+        </div>
         <h3 className="font-display text-lg text-charcoal mt-1">{perfume.name}</h3>
         <p className="text-sm text-gold mt-1 tracking-wide">{formatPrice(perfume.price)}</p>
       </div>

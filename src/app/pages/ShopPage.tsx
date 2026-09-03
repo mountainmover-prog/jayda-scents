@@ -5,10 +5,17 @@ import { perfumes } from '../data/perfumes';
 import { SlidersHorizontal } from 'lucide-react';
 import { formatPrice } from '../utils/format';
 
+const typeOptions = [
+  { value: 'all', label: 'All' },
+  { value: 'edp', label: 'Eau de Parfum' },
+  { value: 'oil', label: 'Perfume Oil' },
+];
+
 export function ShopPage() {
   const [searchParams] = useSearchParams();
   const categoryParam = searchParams.get('category');
-  
+
+  const [selectedType, setSelectedType] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>(categoryParam || 'all');
   const [selectedGender, setSelectedGender] = useState<string>('all');
   const [priceRange, setPriceRange] = useState<string>('all');
@@ -16,6 +23,10 @@ export function ShopPage() {
 
   const filteredPerfumes = useMemo(() => {
     return perfumes.filter((perfume) => {
+      if (selectedType !== 'all' && perfume.type !== selectedType) {
+        return false;
+      }
+
       if (selectedCategory !== 'all' && perfume.category !== selectedCategory) {
         return false;
       }
@@ -41,7 +52,7 @@ export function ShopPage() {
 
       return true;
     });
-  }, [selectedCategory, selectedGender, priceRange]);
+  }, [selectedType, selectedCategory, selectedGender, priceRange]);
 
   return (
     <div className="min-h-screen bg-bone">
@@ -66,6 +77,26 @@ export function ShopPage() {
           {/* Filters Sidebar */}
           <aside className={`lg:w-64 flex-shrink-0 ${showFilters ? 'block' : 'hidden lg:block'}`}>
             <div className="space-y-8 sticky top-28">
+              {/* Type Filter */}
+              <div>
+                <h3 className="text-[10px] tracking-[0.16em] text-gold mb-4 uppercase">TYPE</h3>
+                <div className="space-y-2">
+                  {typeOptions.map((option) => (
+                    <label key={option.value} className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="type"
+                        value={option.value}
+                        checked={selectedType === option.value}
+                        onChange={(e) => setSelectedType(e.target.value)}
+                        className="w-4 h-4 accent-gold"
+                      />
+                      <span className="text-sm text-charcoal">{option.label}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
               {/* Category Filter */}
               <div>
                 <h3 className="text-[10px] tracking-[0.16em] text-gold mb-4 uppercase">CATEGORY</h3>
@@ -132,6 +163,7 @@ export function ShopPage() {
               {/* Clear Filters */}
               <button
                 onClick={() => {
+                  setSelectedType('all');
                   setSelectedCategory('all');
                   setSelectedGender('all');
                   setPriceRange('all');

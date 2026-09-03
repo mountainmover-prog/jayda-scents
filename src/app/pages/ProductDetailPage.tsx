@@ -4,7 +4,7 @@ import { useCart } from '../context/CartContext';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { ArrowLeft, ShoppingBag } from 'lucide-react';
 import { useState } from 'react';
-import { formatPrice } from '../utils/format';
+import { formatPrice, formatType } from '../utils/format';
 
 export function ProductDetailPage() {
   const { id } = useParams();
@@ -61,7 +61,11 @@ export function ProductDetailPage() {
           {/* Product Details */}
           <div className="flex flex-col">
             <div className="mb-8">
-              <p className="text-[10px] text-muted tracking-[0.16em] mb-2 uppercase">{perfume.brand}</p>
+              <div className="flex items-center gap-2 mb-2">
+                <p className="text-[10px] text-muted tracking-[0.16em] uppercase">{perfume.brand}</p>
+                <span className="text-rule">·</span>
+                <p className="text-[10px] text-bronze tracking-[0.16em] uppercase">{formatType(perfume.type)}</p>
+              </div>
               <h1 className="font-display text-3xl md:text-4xl text-charcoal mb-4">{perfume.name}</h1>
               <p className="text-xl text-gold mb-4 tracking-wide">{formatPrice(perfume.price)}</p>
               <p className="text-charcoal/70 font-light leading-relaxed">{perfume.description}</p>
@@ -102,6 +106,10 @@ export function ProductDetailPage() {
 
             {/* Additional Info */}
             <div className="mt-10 space-y-0 text-sm">
+              <div className="flex justify-between py-3 border-b border-rule">
+                <span className="text-muted tracking-wide">Type</span>
+                <span className="text-charcoal">{formatType(perfume.type)}</span>
+              </div>
               <div className="flex justify-between py-3 border-b border-rule">
                 <span className="text-muted tracking-wide">Category</span>
                 <span className="text-charcoal capitalize">{perfume.category}</span>

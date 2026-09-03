@@ -7,6 +7,7 @@ export interface Perfume {
   image: string;
   category: 'floral' | 'woody' | 'fresh' | 'oriental';
   gender: 'men' | 'women' | 'unisex';
+  type: 'edp' | 'oil';
   size: string;
   notes: {
     top: string[];

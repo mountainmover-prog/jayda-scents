@@ -10,6 +10,7 @@ export const perfumes: Perfume[] = [
     image: 'https://images.unsplash.com/photo-1770301410072-f6ef6dad65b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBwZXJmdW1lJTIwYm90dGxlJTIwZ29sZHxlbnwxfHx8fDE3NzE0OTU3NTN8MA&ixlib=rb-4.1.0&q=80&w=1080',
     category: 'oriental',
     gender: 'unisex',
+    type: 'edp',
     size: '100ml',
     notes: {
       top: ['Bergamot', 'Saffron', 'Pink Pepper'],
@@ -26,6 +27,7 @@ export const perfumes: Perfume[] = [
     image: 'https://images.unsplash.com/photo-1508771400123-e194ad75c0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwcGVyZnVtZSUyMGJvdHRsZSUyMHBpbmt8ZW58MXx8fHwxNzcxNDkwOTE0fDA&ixlib=rb-4.1.0&q=80&w=1080',
     category: 'floral',
     gender: 'women',
+    type: 'edp',
     size: '75ml',
     notes: {
       top: ['Lychee', 'Mandarin', 'Red Berries'],
@@ -42,6 +44,7 @@ export const perfumes: Perfume[] = [
     image: 'https://images.unsplash.com/photo-1554948419-1939083b12cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBwZXJmdW1lJTIwYm90dGxlJTIwYmxhY2t8ZW58MXx8fHwxNzcxNTY5NzY2fDA&ixlib=rb-4.1.0&q=80&w=1080',
     category: 'woody',
     gender: 'men',
+    type: 'oil',
     size: '100ml',
     notes: {
       top: ['Black Pepper', 'Cardamom', 'Grapefruit'],
@@ -58,6 +61,7 @@ export const perfumes: Perfume[] = [
     image: 'https://images.unsplash.com/photo-1761778304143-4c89e7dd2457?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNpZ25lciUyMHBlcmZ1bWUlMjBib3R0bGUlMjB3aGl0ZXxlbnwxfHx8fDE3NzE1MzA5MDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
     category: 'fresh',
     gender: 'unisex',
+    type: 'edp',
     size: '50ml',
     notes: {
       top: ['White Tea', 'Neroli', 'Mint'],
@@ -74,6 +78,7 @@ export const perfumes: Perfume[] = [
     image: 'https://images.unsplash.com/photo-1763986665850-6e66549aa8e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmbG9yYWwlMjBwZXJmdW1lJTIwYm90dGxlJTIwZ2xhc3N8ZW58MXx8fHwxNzcxNTY5NzY3fDA&ixlib=rb-4.1.0&q=80&w=1080',
     category: 'floral',
     gender: 'women',
+    type: 'oil',
     size: '75ml',
     notes: {
       top: ['Orange Blossom', 'Pear', 'Lemon'],
@@ -90,6 +95,7 @@ export const perfumes: Perfume[] = [
     image: 'https://images.unsplash.com/photo-1765031117402-93b2e530edec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbWJlciUyMHBlcmZ1bWUlMjBib3R0bGUlMjB2aW50YWdlfGVufDF8fHx8MTc3MTU2OTc2N3ww&ixlib=rb-4.1.0&q=80&w=1080',
     category: 'oriental',
     gender: 'unisex',
+    type: 'oil',
     size: '100ml',
     notes: {
       top: ['Cinnamon', 'Clove', 'Orange'],
@@ -106,6 +112,7 @@ export const perfumes: Perfume[] = [
     image: 'https://images.unsplash.com/photo-1621275155732-2bff82c64fd2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcnlzdGFsJTIwcGVyZnVtZSUyMGJvdHRsZSUyMG1pbmltYWxpc3R8ZW58MXx8fHwxNzcxNTY5NzY3fDA&ixlib=rb-4.1.0&q=80&w=1080',
     category: 'fresh',
     gender: 'unisex',
+    type: 'edp',
     size: '50ml',
     notes: {
       top: ['Sea Salt', 'Cucumber', 'Mint'],
@@ -122,6 +129,7 @@ export const perfumes: Perfume[] = [
     image: 'https://images.unsplash.com/photo-1767458770505-4daf3e3a3f77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJmdW1lJTIwYm90dGxlcyUyMGNvbGxlY3Rpb24lMjBsdXh1cnl8ZW58MXx8fHwxNzcxNTY5NzY3fDA&ixlib=rb-4.1.0&q=80&w=1080',
     category: 'woody',
     gender: 'men',
+    type: 'edp',
     size: '100ml',
     notes: {
       top: ['Pine', 'Juniper', 'Bergamot'],
