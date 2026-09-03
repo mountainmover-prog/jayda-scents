@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { ProductCard } from '../components/ProductCard';
 import { perfumes } from '../data/perfumes';
 import { SlidersHorizontal } from 'lucide-react';
+import { formatPrice } from '../utils/format';
 
 export function WomenPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -10,17 +11,14 @@ export function WomenPage() {
 
   const filteredPerfumes = useMemo(() => {
     return perfumes.filter((perfume) => {
-      // Only women and unisex perfumes
       if (perfume.gender !== 'women' && perfume.gender !== 'unisex') {
         return false;
       }
 
-      // Category filter
       if (selectedCategory !== 'all' && perfume.category !== selectedCategory) {
         return false;
       }
 
-      // Price filter
       if (priceRange === 'under150' && perfume.price >= 150) {
         return false;
       }
@@ -36,30 +34,30 @@ export function WomenPage() {
   }, [selectedCategory, priceRange]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-bone">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl tracking-wider mb-2">WOMEN'S FRAGRANCES</h1>
-            <p className="text-sm text-gray-600">{filteredPerfumes.length} products</p>
+            <h1 className="font-display text-3xl text-charcoal mb-2">WOMEN'S FRAGRANCES</h1>
+            <div className="w-12 h-px bg-gold mb-2" />
+            <p className="text-sm text-muted">{filteredPerfumes.length} products</p>
           </div>
           <button
-            className="flex items-center gap-2 px-4 py-2 border hover:bg-gray-50 transition-colors lg:hidden"
+            className="flex items-center gap-2 px-4 py-2 border border-rule hover:border-gold transition-colors lg:hidden"
             onClick={() => setShowFilters(!showFilters)}
           >
-            <SlidersHorizontal className="w-4 h-4" />
-            <span className="text-sm">Filters</span>
+            <SlidersHorizontal className="w-4 h-4 text-charcoal" />
+            <span className="text-xs text-charcoal tracking-[0.16em] uppercase">Filters</span>
           </button>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Filters Sidebar */}
           <aside className={`lg:w-64 flex-shrink-0 ${showFilters ? 'block' : 'hidden lg:block'}`}>
-            <div className="space-y-8 sticky top-24">
-              {/* Category Filter */}
+            <div className="space-y-8 sticky top-28">
               <div>
-                <h3 className="text-sm tracking-wider mb-4">CATEGORY</h3>
+                <h3 className="text-[10px] tracking-[0.16em] text-gold mb-4 uppercase">CATEGORY</h3>
                 <div className="space-y-2">
                   {['all', 'floral', 'woody', 'fresh', 'oriental'].map((category) => (
                     <label key={category} className="flex items-center gap-2 cursor-pointer">
@@ -69,72 +67,42 @@ export function WomenPage() {
                         value={category}
                         checked={selectedCategory === category}
                         onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="w-4 h-4"
+                        className="w-4 h-4 accent-gold"
                       />
-                      <span className="text-sm capitalize">{category}</span>
+                      <span className="text-sm text-charcoal capitalize">{category}</span>
                     </label>
                   ))}
                 </div>
               </div>
 
-              {/* Price Filter */}
               <div>
-                <h3 className="text-sm tracking-wider mb-4">PRICE</h3>
+                <h3 className="text-[10px] tracking-[0.16em] text-gold mb-4 uppercase">PRICE</h3>
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="price"
-                      value="all"
-                      checked={priceRange === 'all'}
-                      onChange={(e) => setPriceRange(e.target.value)}
-                      className="w-4 h-4"
-                    />
-                    <span className="text-sm">All Prices</span>
+                    <input type="radio" name="price" value="all" checked={priceRange === 'all'} onChange={(e) => setPriceRange(e.target.value)} className="w-4 h-4 accent-gold" />
+                    <span className="text-sm text-charcoal">All Prices</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="price"
-                      value="under150"
-                      checked={priceRange === 'under150'}
-                      onChange={(e) => setPriceRange(e.target.value)}
-                      className="w-4 h-4"
-                    />
-                    <span className="text-sm">Under ₱150</span>
+                    <input type="radio" name="price" value="under150" checked={priceRange === 'under150'} onChange={(e) => setPriceRange(e.target.value)} className="w-4 h-4 accent-gold" />
+                    <span className="text-sm text-charcoal">Under {formatPrice(150)}</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="price"
-                      value="150to200"
-                      checked={priceRange === '150to200'}
-                      onChange={(e) => setPriceRange(e.target.value)}
-                      className="w-4 h-4"
-                    />
-                    <span className="text-sm">₱150 - ₱200</span>
+                    <input type="radio" name="price" value="150to200" checked={priceRange === '150to200'} onChange={(e) => setPriceRange(e.target.value)} className="w-4 h-4 accent-gold" />
+                    <span className="text-sm text-charcoal">{formatPrice(150)} – {formatPrice(200)}</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="price"
-                      value="over200"
-                      checked={priceRange === 'over200'}
-                      onChange={(e) => setPriceRange(e.target.value)}
-                      className="w-4 h-4"
-                    />
-                    <span className="text-sm">Over ₱200</span>
+                    <input type="radio" name="price" value="over200" checked={priceRange === 'over200'} onChange={(e) => setPriceRange(e.target.value)} className="w-4 h-4 accent-gold" />
+                    <span className="text-sm text-charcoal">Over {formatPrice(200)}</span>
                   </label>
                 </div>
               </div>
 
-              {/* Clear Filters */}
               <button
                 onClick={() => {
                   setSelectedCategory('all');
                   setPriceRange('all');
                 }}
-                className="text-sm text-gray-600 hover:text-black transition-colors"
+                className="text-xs text-muted hover:text-gold transition-colors tracking-[0.16em] uppercase"
               >
                 Clear All Filters
               </button>
@@ -151,7 +119,7 @@ export function WomenPage() {
               </div>
             ) : (
               <div className="text-center py-16">
-                <p className="text-gray-600">No products found matching your filters.</p>
+                <p className="text-muted">No products found matching your filters.</p>
               </div>
             )}
           </div>

@@ -30,7 +30,7 @@ shadcn/ui (Radix) + MUI + lucide-react.
 
 Routes: `/`, `/shop`, `/women`, `/men`, `/unisex`, `/product/:id`, `/cart`.
 Product data is hardcoded in `src/app/data/perfumes.ts`.
-Branding still says "Aliza Atelier"; prices are plain numbers rendered with ₱.
+Branding has been updated to "Jayda Scents"; prices are rendered as TZS with thousands separators.
 
 ---
 

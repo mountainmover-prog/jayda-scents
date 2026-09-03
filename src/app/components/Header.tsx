@@ -1,59 +1,61 @@
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { ShoppingBag, Search, Menu } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useState } from 'react';
+
+const navItems = [
+  { to: '/', label: 'HOME' },
+  { to: '/shop', label: 'SHOP' },
+  { to: '/women', label: 'WOMEN' },
+  { to: '/men', label: 'MEN' },
+  { to: '/unisex', label: 'UNISEX' },
+];
 
 export function Header() {
   const { getCartCount } = useCart();
   const cartCount = getCartCount();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `relative text-xs tracking-[0.16em] transition-colors pb-1 ${
+      isActive
+        ? 'text-cream after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-gold'
+        : 'text-cream hover:text-gold after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold hover:after:w-full after:transition-all'
+    }`;
+
   return (
-    <header className="sticky top-0 z-50 bg-white border-b">
+    <header className="sticky top-0 z-50 bg-ink border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
-              <span className="text-white text-sm">A</span>
-            </div>
-            <span className="text-xl tracking-wider">ALIZA ATELIER</span>
+          <Link to="/" className="flex items-center">
+            <img src="/logo.svg" alt="Jayda Scents" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-sm hover:text-gray-600 transition-colors">
-              HOME
-            </Link>
-            <Link to="/shop" className="text-sm hover:text-gray-600 transition-colors">
-              SHOP
-            </Link>
-            <Link to="/women" className="text-sm hover:text-gray-600 transition-colors">
-              WOMEN
-            </Link>
-            <Link to="/men" className="text-sm hover:text-gray-600 transition-colors">
-              MEN
-            </Link>
-            <Link to="/unisex" className="text-sm hover:text-gray-600 transition-colors">
-              UNISEX
-            </Link>
+          <nav className="hidden md:flex items-center gap-10">
+            {navItems.map((item) => (
+              <NavLink key={item.to} to={item.to} end={item.to === '/'} className={navLinkClass}>
+                {item.label}
+              </NavLink>
+            ))}
           </nav>
 
           {/* Right Side Icons */}
-          <div className="flex items-center space-x-4">
-            <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+          <div className="flex items-center gap-3">
+            <button className="p-2 hover:bg-white/5 rounded-full transition-colors text-cream">
               <Search className="w-5 h-5" />
             </button>
-            <Link to="/cart" className="p-2 hover:bg-gray-100 rounded-full transition-colors relative">
+            <Link to="/cart" className="p-2 hover:bg-white/5 rounded-full transition-colors relative text-cream">
               <ShoppingBag className="w-5 h-5" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-black text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                <span className="absolute -top-1 -right-1 bg-gold text-ink text-xs w-5 h-5 flex items-center justify-center rounded-full font-medium">
                   {cartCount}
                 </span>
               )}
             </Link>
             <button
-              className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="md:hidden p-2 hover:bg-white/5 rounded-full transition-colors text-cream"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <Menu className="w-5 h-5" />
@@ -63,43 +65,23 @@ export function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t py-4">
-            <nav className="flex flex-col space-y-4">
-              <Link
-                to="/"
-                className="text-sm hover:text-gray-600 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                HOME
-              </Link>
-              <Link
-                to="/shop"
-                className="text-sm hover:text-gray-600 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                SHOP
-              </Link>
-              <Link
-                to="/women"
-                className="text-sm hover:text-gray-600 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                WOMEN
-              </Link>
-              <Link
-                to="/men"
-                className="text-sm hover:text-gray-600 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                MEN
-              </Link>
-              <Link
-                to="/unisex"
-                className="text-sm hover:text-gray-600 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                UNISEX
-              </Link>
+          <div className="md:hidden border-t border-white/5 py-4">
+            <nav className="flex flex-col gap-5">
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  end={item.to === '/'}
+                  className={({ isActive }) =>
+                    `text-xs tracking-[0.16em] transition-colors ${
+                      isActive ? 'text-gold' : 'text-cream hover:text-gold'
+                    }`
+                  }
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </NavLink>
+              ))}
             </nav>
           </div>
         )}
