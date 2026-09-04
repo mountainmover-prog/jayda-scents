@@ -5,6 +5,7 @@ import { ShopPage } from './pages/ShopPage';
 import { WomenPage } from './pages/WomenPage';
 import { MenPage } from './pages/MenPage';
 import { UnisexPage } from './pages/UnisexPage';
+import { BodyMistsPage } from './pages/BodyMistsPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { CartPage } from './pages/CartPage';
 
@@ -18,7 +19,8 @@ export const router = createBrowserRouter([
       { path: 'women', Component: WomenPage },
       { path: 'men', Component: MenPage },
       { path: 'unisex', Component: UnisexPage },
-      { path: 'product/:id', Component: ProductDetailPage },
+      { path: 'body-mists', Component: BodyMistsPage },
+      { path: 'product/:slug', Component: ProductDetailPage },
       { path: 'cart', Component: CartPage },
     ],
   },

@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { CartItem, Perfume } from '../types';
+import { CartItem, Product, Variant, lineId } from '../types';
 
 interface CartContextType {
   cartItems: CartItem[];
-  addToCart: (perfume: Perfume) => void;
-  removeFromCart: (perfumeId: string) => void;
-  updateQuantity: (perfumeId: string, quantity: number) => void;
+  addToCart: (product: Product, variant: Variant, quantity?: number) => void;
+  removeFromCart: (slug: string, sku: string) => void;
+  updateQuantity: (slug: string, sku: string, quantity: number) => void;
   clearCart: () => void;
   getCartTotal: () => number;
   getCartCount: () => number;
@@ -16,47 +16,48 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const addToCart = (perfume: Perfume) => {
-    setCartItems((prevItems) => {
-      const existingItem = prevItems.find((item) => item.perfume.id === perfume.id);
-      if (existingItem) {
-        return prevItems.map((item) =>
-          item.perfume.id === perfume.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+  const addToCart = (product: Product, variant: Variant, quantity = 1) => {
+    setCartItems((prev) => {
+      const id = lineId(product.slug, variant.sku);
+      const existing = prev.find((i) => lineId(i.product.slug, i.variant.sku) === id);
+      if (existing) {
+        return prev.map((i) =>
+          lineId(i.product.slug, i.variant.sku) === id
+            ? // never let the cart exceed what is actually on the shelf
+              { ...i, quantity: Math.min(i.quantity + quantity, variant.stock) }
+            : i
         );
       }
-      return [...prevItems, { perfume, quantity: 1 }];
+      return [...prev, { product, variant, quantity: Math.min(quantity, variant.stock) }];
     });
   };
 
-  const removeFromCart = (perfumeId: string) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.perfume.id !== perfumeId));
+  const removeFromCart = (slug: string, sku: string) => {
+    const id = lineId(slug, sku);
+    setCartItems((prev) => prev.filter((i) => lineId(i.product.slug, i.variant.sku) !== id));
   };
 
-  const updateQuantity = (perfumeId: string, quantity: number) => {
+  const updateQuantity = (slug: string, sku: string, quantity: number) => {
     if (quantity <= 0) {
-      removeFromCart(perfumeId);
+      removeFromCart(slug, sku);
       return;
     }
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.perfume.id === perfumeId ? { ...item, quantity } : item
+    const id = lineId(slug, sku);
+    setCartItems((prev) =>
+      prev.map((i) =>
+        lineId(i.product.slug, i.variant.sku) === id
+          ? { ...i, quantity: Math.min(quantity, i.variant.stock) }
+          : i
       )
     );
   };
 
-  const clearCart = () => {
-    setCartItems([]);
-  };
+  const clearCart = () => setCartItems([]);
 
-  const getCartTotal = () => {
-    return cartItems.reduce((total, item) => total + item.perfume.price * item.quantity, 0);
-  };
+  const getCartTotal = () =>
+    cartItems.reduce((total, i) => total + i.variant.priceTzs * i.quantity, 0);
 
-  const getCartCount = () => {
-    return cartItems.reduce((count, item) => count + item.quantity, 0);
-  };
+  const getCartCount = () => cartItems.reduce((n, i) => n + i.quantity, 0);
 
   return (
     <CartContext.Provider

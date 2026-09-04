@@ -1,6 +1,6 @@
 import { Hero } from '../components/Hero';
 import { ProductCard } from '../components/ProductCard';
-import { perfumes } from '../data/perfumes';
+import { featuredProducts, products } from '../data/products';
 import { Link } from 'react-router';
 
 const categories = [
@@ -25,7 +25,8 @@ const categories = [
 ];
 
 export function HomePage() {
-  const featuredPerfumes = perfumes.slice(0, 4);
+  // featured flags come from the catalogue; fall back to the first few if none are set
+  const featured = (featuredProducts.length ? featuredProducts : products).slice(0, 4);
 
   return (
     <div className="min-h-screen bg-bone">
@@ -79,8 +80,8 @@ export function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {featuredPerfumes.map((perfume) => (
-              <ProductCard key={perfume.id} perfume={perfume} />
+            {featured.map((product) => (
+              <ProductCard key={product.slug} product={product} />
             ))}
           </div>
         </div>
@@ -93,7 +94,8 @@ export function HomePage() {
             <div>
               <h3 className="font-display text-lg text-cream mb-4">ABOUT</h3>
               <p className="text-sm text-cream/60 font-light leading-relaxed">
-                Eau de parfum and pure perfume oils, blended and bottled in Zanzibar.
+                Eau de parfum, perfume oils and body mists from Lattafa, Armaf, Afnan and more —
+                chosen for how long they last and what they cost.
               </p>
             </div>
             <div>
@@ -107,9 +109,21 @@ export function HomePage() {
             <div>
               <h3 className="font-display text-lg text-cream mb-4">SHOP</h3>
               <ul className="space-y-2 text-sm text-cream/60 font-light">
-                <li>New Arrivals</li>
-                <li>Best Sellers</li>
-                <li>Gift Sets</li>
+                <li>
+                  <Link to="/shop" className="hover:text-gold transition-colors">
+                    All fragrances
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/women" className="hover:text-gold transition-colors">
+                    For women
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/men" className="hover:text-gold transition-colors">
+                    For men
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>

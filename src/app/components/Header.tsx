@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router';
 import { ShoppingBag, Search, Menu } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useState } from 'react';
+import { bodyMists } from '../data/products';
 
 const navItems = [
   { to: '/', label: 'HOME' },
@@ -9,6 +10,8 @@ const navItems = [
   { to: '/women', label: 'WOMEN' },
   { to: '/men', label: 'MEN' },
   { to: '/unisex', label: 'UNISEX' },
+  // only surfaces once there are mists in the catalogue
+  ...(bodyMists.length > 0 ? [{ to: '/body-mists', label: 'BODY MISTS' }] : []),
 ];
 
 export function Header() {
@@ -33,7 +36,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <NavLink key={item.to} to={item.to} end={item.to === '/'} className={navLinkClass}>
                 {item.label}

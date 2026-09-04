@@ -1,20 +1,21 @@
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router';
-import { perfumes } from '../data/perfumes';
+import { ArrowLeft, ShoppingBag } from 'lucide-react';
+import { findProduct } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { ArrowLeft, ShoppingBag } from 'lucide-react';
-import { useState } from 'react';
 import { formatPrice, formatType } from '../utils/format';
 
 export function ProductDetailPage() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
-  const [addedToCart, setAddedToCart] = useState(false);
+  const product = findProduct(slug);
 
-  const perfume = perfumes.find((p) => p.id === id);
+  const [variantIndex, setVariantIndex] = useState(0);
+  const [added, setAdded] = useState(false);
 
-  if (!perfume) {
+  if (!product) {
     return (
       <div className="min-h-screen bg-bone flex items-center justify-center">
         <div className="text-center">
@@ -30,16 +31,32 @@ export function ProductDetailPage() {
     );
   }
 
+  const variant = product.variants[variantIndex];
+  const soldOut = variant.stock === 0;
+  const lowStock = variant.stock > 0 && variant.stock <= 3;
+  const hasNotes =
+    product.notes.top.length > 0 ||
+    product.notes.heart.length > 0 ||
+    product.notes.base.length > 0;
+
   const handleAddToCart = () => {
-    addToCart(perfume);
-    setAddedToCart(true);
-    setTimeout(() => setAddedToCart(false), 2000);
+    if (soldOut) return;
+    addToCart(product, variant);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
   };
+
+  const Note = ({ label, items }: { label: string; items: string[] }) =>
+    items.length === 0 ? null : (
+      <div>
+        <p className="text-[10px] tracking-[0.16em] text-gold mb-2 uppercase">{label}</p>
+        <p className="text-sm text-charcoal/70 font-light">{items.join(', ')}</p>
+      </div>
+    );
 
   return (
     <div className="min-h-screen bg-bone">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-xs tracking-[0.16em] text-muted hover:text-charcoal transition-colors mb-8 uppercase"
@@ -49,78 +66,97 @@ export function ProductDetailPage() {
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Product Image */}
           <div className="relative aspect-[3/4] bg-cream rounded-lg overflow-hidden">
             <ImageWithFallback
-              src={perfume.image}
-              alt={perfume.name}
-              className="object-cover w-full h-full"
+              src={product.images[0]}
+              alt={product.name}
+              className="object-contain w-full h-full p-10"
             />
           </div>
 
-          {/* Product Details */}
           <div className="flex flex-col">
             <div className="mb-8">
               <div className="flex items-center gap-2 mb-2">
-                <p className="text-[10px] text-muted tracking-[0.16em] uppercase">{perfume.brand}</p>
+                <p className="text-[10px] text-muted tracking-[0.16em] uppercase">{product.brand}</p>
                 <span className="text-rule">·</span>
-                <p className="text-[10px] text-bronze tracking-[0.16em] uppercase">{formatType(perfume.type)}</p>
+                <p className="text-[10px] text-bronze tracking-[0.16em] uppercase">
+                  {formatType(product.type)}
+                </p>
               </div>
-              <h1 className="font-display text-3xl md:text-4xl text-charcoal mb-4">{perfume.name}</h1>
-              <p className="text-xl text-gold mb-4 tracking-wide">{formatPrice(perfume.price)}</p>
-              <p className="text-charcoal/70 font-light leading-relaxed">{perfume.description}</p>
+              <h1 className="font-display text-3xl md:text-4xl text-charcoal mb-4">
+                {product.name}
+              </h1>
+              <p className="text-xl text-gold mb-4 tracking-wide">
+                {formatPrice(variant.priceTzs)}
+                {variant.wasPriceTzs && (
+                  <span className="ml-3 text-sm text-muted line-through">
+                    {formatPrice(variant.wasPriceTzs)}
+                  </span>
+                )}
+              </p>
+              <p className="text-charcoal/70 font-light leading-relaxed">
+                {product.longDescription || product.shortDescription}
+              </p>
             </div>
 
-            {/* Size */}
             <div className="mb-8">
-              <p className="text-[10px] tracking-[0.16em] text-muted mb-3 uppercase">SIZE</p>
-              <div className="inline-block px-5 py-2 border border-gold">
-                <span className="text-sm text-charcoal">{perfume.size}</span>
+              <p className="text-[10px] tracking-[0.16em] text-muted mb-3 uppercase">Size</p>
+              <div className="flex flex-wrap gap-2">
+                {product.variants.map((v, i) => (
+                  <button
+                    key={v.sku}
+                    onClick={() => setVariantIndex(i)}
+                    disabled={v.stock === 0}
+                    className={`px-5 py-2 border text-sm transition-colors ${
+                      i === variantIndex
+                        ? 'border-gold bg-gold text-ink'
+                        : 'border-rule text-charcoal hover:border-gold'
+                    } ${v.stock === 0 ? 'opacity-40 cursor-not-allowed line-through' : ''}`}
+                  >
+                    {v.sizeLabel}
+                  </button>
+                ))}
               </div>
+              {lowStock && (
+                <p className="text-xs text-bronze mt-3">Only {variant.stock} left in this size.</p>
+              )}
             </div>
 
-            {/* Notes */}
-            <div className="mb-10 space-y-5">
-              <div>
-                <p className="text-[10px] tracking-[0.16em] text-gold mb-2 uppercase">TOP NOTES</p>
-                <p className="text-sm text-charcoal/70 font-light">{perfume.notes.top.join(', ')}</p>
+            {hasNotes && (
+              <div className="mb-10 space-y-5">
+                <Note label="Top notes" items={product.notes.top} />
+                <Note label="Heart notes" items={product.notes.heart} />
+                <Note label="Base notes" items={product.notes.base} />
               </div>
-              <div>
-                <p className="text-[10px] tracking-[0.16em] text-gold mb-2 uppercase">HEART NOTES</p>
-                <p className="text-sm text-charcoal/70 font-light">{perfume.notes.heart.join(', ')}</p>
-              </div>
-              <div>
-                <p className="text-[10px] tracking-[0.16em] text-gold mb-2 uppercase">BASE NOTES</p>
-                <p className="text-sm text-charcoal/70 font-light">{perfume.notes.base.join(', ')}</p>
-              </div>
-            </div>
+            )}
 
-            {/* Add to Cart Button */}
             <button
               onClick={handleAddToCart}
-              className="w-full bg-ink text-cream py-4 text-xs tracking-[0.16em] hover:bg-charcoal transition-colors flex items-center justify-center gap-2 uppercase"
+              disabled={soldOut}
+              className="w-full bg-ink text-cream py-4 text-xs tracking-[0.16em] hover:bg-charcoal transition-colors flex items-center justify-center gap-2 uppercase disabled:bg-rule disabled:text-muted disabled:cursor-not-allowed"
             >
               <ShoppingBag className="w-5 h-5" />
-              {addedToCart ? 'ADDED TO CART' : 'ADD TO CART'}
+              {soldOut ? 'Sold out' : added ? 'Added to cart' : 'Add to cart'}
             </button>
 
-            {/* Additional Info */}
-            <div className="mt-10 space-y-0 text-sm">
+            <div className="mt-10 text-sm">
               <div className="flex justify-between py-3 border-b border-rule">
                 <span className="text-muted tracking-wide">Type</span>
-                <span className="text-charcoal">{formatType(perfume.type)}</span>
+                <span className="text-charcoal">{formatType(product.type)}</span>
+              </div>
+              {product.family && (
+                <div className="flex justify-between py-3 border-b border-rule">
+                  <span className="text-muted tracking-wide">Scent family</span>
+                  <span className="text-charcoal capitalize">{product.family}</span>
+                </div>
+              )}
+              <div className="flex justify-between py-3 border-b border-rule">
+                <span className="text-muted tracking-wide">For</span>
+                <span className="text-charcoal capitalize">{product.gender}</span>
               </div>
               <div className="flex justify-between py-3 border-b border-rule">
-                <span className="text-muted tracking-wide">Category</span>
-                <span className="text-charcoal capitalize">{perfume.category}</span>
-              </div>
-              <div className="flex justify-between py-3 border-b border-rule">
-                <span className="text-muted tracking-wide">Gender</span>
-                <span className="text-charcoal capitalize">{perfume.gender}</span>
-              </div>
-              <div className="flex justify-between py-3 border-b border-rule">
-                <span className="text-muted tracking-wide">Free Shipping</span>
-                <span className="text-charcoal">On orders over {formatPrice(100)}</span>
+                <span className="text-muted tracking-wide">Delivery</span>
+                <span className="text-charcoal">Arranged when you order</span>
               </div>
             </div>
           </div>
