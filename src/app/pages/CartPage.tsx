@@ -140,13 +140,16 @@ export function CartPage() {
                   <span className="font-display text-lg text-gold">{formatPrice(subtotal)}</span>
                 </div>
                 <p className="text-xs text-muted">
-                  Delivery is added once we confirm your area. Payment by mobile money.
+                  Delivery is added once we confirm your area. Pay by mobile money at checkout.
                 </p>
               </div>
 
-              <button className="w-full bg-ink text-cream py-4 text-xs tracking-[0.16em] hover:bg-charcoal transition-colors mb-3 uppercase">
+              <Link
+                to="/checkout"
+                className="block w-full bg-ink text-cream py-4 text-xs tracking-[0.16em] hover:bg-charcoal transition-colors mb-3 uppercase text-center"
+              >
                 Checkout
-              </button>
+              </Link>
 
               <button
                 onClick={() => navigate('/shop')}

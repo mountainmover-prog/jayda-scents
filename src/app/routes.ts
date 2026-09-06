@@ -8,6 +8,7 @@ import { UnisexPage } from './pages/UnisexPage';
 import { BodyMistsPage } from './pages/BodyMistsPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { CartPage } from './pages/CartPage';
+import { CheckoutPage } from './pages/CheckoutPage';
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
       { path: 'body-mists', Component: BodyMistsPage },
       { path: 'product/:slug', Component: ProductDetailPage },
       { path: 'cart', Component: CartPage },
+      { path: 'checkout', Component: CheckoutPage },
     ],
   },
 ]);
