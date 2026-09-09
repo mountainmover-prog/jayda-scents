@@ -1,11 +1,13 @@
 import { CollectionPage } from '../components/CollectionPage';
 import { bodyMists } from '../data/products';
+import { useLang } from '../i18n/LanguageContext';
 
 export function BodyMistsPage() {
+  const { t } = useLang();
   return (
     <CollectionPage
-      title="BODY MISTS"
-      intro="Lighter than a perfume and made to be reapplied through the day."
+      title={t('collMists')}
+      intro={t('bodyMistsIntro')}
       products={bodyMists}
       showGenderFilter
     />

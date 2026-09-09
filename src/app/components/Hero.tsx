@@ -1,6 +1,9 @@
 import { Link } from 'react-router';
+import { useLang } from '../i18n/LanguageContext';
 
 export function Hero() {
+  const { t } = useLang();
+
   return (
     <div className="relative h-[70vh] min-h-[500px] bg-ink overflow-hidden">
       <div
@@ -16,17 +19,17 @@ export function Hero() {
       />
       <div className="relative h-full flex items-center justify-center text-center px-4">
         <div className="max-w-3xl">
-          <h1 className="font-display text-4xl md:text-6xl text-cream tracking-wide mb-6 leading-[1.15]">
-            DISCOVER YOUR SIGNATURE SCENT
+          <h1 className="font-display text-4xl md:text-6xl text-cream tracking-wide mb-6 leading-[1.15] uppercase">
+            {t('heroTitle')}
           </h1>
           <p className="text-base md:text-lg text-cream/80 font-body font-light mb-10 max-w-2xl mx-auto leading-relaxed">
-            Explore our curated collection of luxury fragrances crafted for the modern connoisseur
+            {t('heroSub')}
           </p>
           <Link
             to="/shop"
-            className="inline-block bg-gold text-ink px-10 py-3 text-xs tracking-[0.16em] hover:bg-gold-light transition-colors duration-300"
+            className="inline-block bg-gold text-ink px-10 py-3 text-xs tracking-[0.16em] hover:bg-gold-light transition-colors duration-300 uppercase"
           >
-            SHOP NOW
+            {t('heroCta')}
           </Link>
         </div>
       </div>

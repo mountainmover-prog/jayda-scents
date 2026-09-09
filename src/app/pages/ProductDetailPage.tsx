@@ -5,11 +5,13 @@ import { findProduct } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { formatPrice, formatType } from '../utils/format';
+import { useLang } from '../i18n/LanguageContext';
 
 export function ProductDetailPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { t, lang } = useLang();
   const product = findProduct(slug);
 
   const [variantIndex, setVariantIndex] = useState(0);
@@ -19,12 +21,12 @@ export function ProductDetailPage() {
     return (
       <div className="min-h-screen bg-bone flex items-center justify-center">
         <div className="text-center">
-          <h2 className="font-display text-2xl text-charcoal mb-4">Product not found</h2>
+          <h2 className="font-display text-2xl text-charcoal mb-4">{t('notFound')}</h2>
           <button
             onClick={() => navigate('/shop')}
             className="text-sm text-gold hover:text-bronze transition-colors"
           >
-            ← Back to shop
+            ← {t('backToShop')}
           </button>
         </div>
       </div>
@@ -62,11 +64,11 @@ export function ProductDetailPage() {
           className="flex items-center gap-2 text-xs tracking-[0.16em] text-muted hover:text-charcoal transition-colors mb-8 uppercase"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back
+          {t('back')}
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="relative aspect-[3/4] bg-cream rounded-lg overflow-hidden">
+          <div className="relative aspect-[3/4] bg-white rounded-lg overflow-hidden">
             <ImageWithFallback
               src={product.images[0]}
               alt={product.name}
@@ -80,7 +82,7 @@ export function ProductDetailPage() {
                 <p className="text-[10px] text-muted tracking-[0.16em] uppercase">{product.brand}</p>
                 <span className="text-rule">·</span>
                 <p className="text-[10px] text-bronze tracking-[0.16em] uppercase">
-                  {formatType(product.type)}
+                  {formatType(product.type, lang)}
                 </p>
               </div>
               <h1 className="font-display text-3xl md:text-4xl text-charcoal mb-4">
@@ -100,7 +102,7 @@ export function ProductDetailPage() {
             </div>
 
             <div className="mb-8">
-              <p className="text-[10px] tracking-[0.16em] text-muted mb-3 uppercase">Size</p>
+              <p className="text-[10px] tracking-[0.16em] text-muted mb-3 uppercase">{t('size')}</p>
               <div className="flex flex-wrap gap-2">
                 {product.variants.map((v, i) => (
                   <button
@@ -118,15 +120,15 @@ export function ProductDetailPage() {
                 ))}
               </div>
               {lowStock && (
-                <p className="text-xs text-bronze mt-3">Only {variant.stock} left in this size.</p>
+                <p className="text-xs text-bronze mt-3">{t('onlyNLeft', { n: variant.stock })}</p>
               )}
             </div>
 
             {hasNotes && (
               <div className="mb-10 space-y-5">
-                <Note label="Top notes" items={product.notes.top} />
-                <Note label="Heart notes" items={product.notes.heart} />
-                <Note label="Base notes" items={product.notes.base} />
+                <Note label={t('topNotes')} items={product.notes.top} />
+                <Note label={t('heartNotes')} items={product.notes.heart} />
+                <Note label={t('baseNotes')} items={product.notes.base} />
               </div>
             )}
 
@@ -136,27 +138,27 @@ export function ProductDetailPage() {
               className="w-full bg-ink text-cream py-4 text-xs tracking-[0.16em] hover:bg-charcoal transition-colors flex items-center justify-center gap-2 uppercase disabled:bg-rule disabled:text-muted disabled:cursor-not-allowed"
             >
               <ShoppingBag className="w-5 h-5" />
-              {soldOut ? 'Sold out' : added ? 'Added to cart' : 'Add to cart'}
+              {soldOut ? t('soldOut') : added ? t('addedToCart') : t('addToCart')}
             </button>
 
             <div className="mt-10 text-sm">
               <div className="flex justify-between py-3 border-b border-rule">
-                <span className="text-muted tracking-wide">Type</span>
-                <span className="text-charcoal">{formatType(product.type)}</span>
+                <span className="text-muted tracking-wide">{t('labelType')}</span>
+                <span className="text-charcoal">{formatType(product.type, lang)}</span>
               </div>
               {product.family && (
                 <div className="flex justify-between py-3 border-b border-rule">
-                  <span className="text-muted tracking-wide">Scent family</span>
+                  <span className="text-muted tracking-wide">{t('labelFamily')}</span>
                   <span className="text-charcoal capitalize">{product.family}</span>
                 </div>
               )}
               <div className="flex justify-between py-3 border-b border-rule">
-                <span className="text-muted tracking-wide">For</span>
-                <span className="text-charcoal capitalize">{product.gender}</span>
+                <span className="text-muted tracking-wide">{t('labelFor')}</span>
+                <span className="text-charcoal capitalize">{t(product.gender)}</span>
               </div>
               <div className="flex justify-between py-3 border-b border-rule">
-                <span className="text-muted tracking-wide">Delivery</span>
-                <span className="text-charcoal">Arranged when you order</span>
+                <span className="text-muted tracking-wide">{t('labelDelivery')}</span>
+                <span className="text-charcoal text-right">{t('deliveryShort')}</span>
               </div>
             </div>
           </div>

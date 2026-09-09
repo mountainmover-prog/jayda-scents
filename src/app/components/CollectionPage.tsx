@@ -4,17 +4,14 @@ import { ProductCard } from './ProductCard';
 import { Product, ProductType } from '../types';
 import { priceFrom } from '../data/products';
 import { formatPrice, formatType } from '../utils/format';
+import { useLang } from '../i18n/LanguageContext';
 
-/** Price bands in TZS. Adjust here if the range shifts. */
-const BANDS: { key: string; label: string; test: (p: number) => boolean }[] = [
-  { key: 'all', label: 'All prices', test: () => true },
-  { key: 'under30', label: `Under ${formatPrice(30000)}`, test: (p) => p < 30000 },
-  {
-    key: '30to40',
-    label: `${formatPrice(30000)} – ${formatPrice(40000)}`,
-    test: (p) => p >= 30000 && p <= 40000,
-  },
-  { key: 'over40', label: `Over ${formatPrice(40000)}`, test: (p) => p > 40000 },
+/** Price bands in TZS. Adjust the numbers here if the range shifts. */
+const BAND_TESTS: { key: string; test: (p: number) => boolean }[] = [
+  { key: 'all', test: () => true },
+  { key: 'under30', test: (p) => p < 30000 },
+  { key: '30to40', test: (p) => p >= 30000 && p <= 40000 },
+  { key: 'over40', test: (p) => p > 40000 },
 ];
 
 interface CollectionPageProps {
@@ -31,12 +28,16 @@ function Radio({
   checked,
   onChange,
   label,
+  /** Single-word values (families, genders) read better capitalised.
+   *  Full phrases must not be — "Chini ya" is not "Chini Ya". */
+  capitalise = false,
 }: {
   name: string;
   value: string;
   checked: boolean;
   onChange: (v: string) => void;
   label: string;
+  capitalise?: boolean;
 }) {
   return (
     <label className="flex items-center gap-2 cursor-pointer">
@@ -48,7 +49,7 @@ function Radio({
         onChange={(e) => onChange(e.target.value)}
         className="w-4 h-4 accent-gold"
       />
-      <span className="text-sm text-charcoal capitalize">{label}</span>
+      <span className={`text-sm text-charcoal ${capitalise ? 'capitalize' : ''}`}>{label}</span>
     </label>
   );
 }
@@ -68,6 +69,14 @@ export function CollectionPage({
   products,
   showGenderFilter = false,
 }: CollectionPageProps) {
+  const { t, lang } = useLang();
+  const bands = [
+    { key: 'all', label: t('allPrices') },
+    { key: 'under30', label: t('under', { v: formatPrice(30000) }) },
+    { key: '30to40', label: `${formatPrice(30000)} – ${formatPrice(40000)}` },
+    { key: 'over40', label: t('over', { v: formatPrice(40000) }) },
+  ];
+
   const [type, setType] = useState('all');
   const [family, setFamily] = useState('all');
   const [gender, setGender] = useState('all');
@@ -85,7 +94,7 @@ export function CollectionPage({
   );
 
   const filtered = useMemo(() => {
-    const bandTest = BANDS.find((b) => b.key === band)?.test ?? (() => true);
+    const bandTest = BAND_TESTS.find((b) => b.key === band)?.test ?? (() => true);
     return products.filter((p) => {
       if (type !== 'all' && p.type !== type) return false;
       if (family !== 'all' && p.family !== family) return false;
@@ -99,11 +108,11 @@ export function CollectionPage({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex items-start justify-between mb-8">
           <div>
-            <h1 className="font-display text-3xl text-charcoal mb-2">{title}</h1>
+            <h1 className="font-display text-3xl text-charcoal mb-2 uppercase">{title}</h1>
             <div className="w-12 h-px bg-gold mb-2" />
             {intro && <p className="text-sm text-charcoal/70 font-light max-w-xl mb-2">{intro}</p>}
             <p className="text-sm text-muted">
-              {filtered.length} {filtered.length === 1 ? 'product' : 'products'}
+              {filtered.length} {filtered.length === 1 ? t('product') : t('products')}
             </p>
           </div>
           <button
@@ -111,7 +120,7 @@ export function CollectionPage({
             onClick={() => setShowFilters(!showFilters)}
           >
             <SlidersHorizontal className="w-4 h-4 text-charcoal" />
-            <span className="text-xs text-charcoal tracking-[0.16em] uppercase">Filters</span>
+            <span className="text-xs text-charcoal tracking-[0.16em] uppercase">{t('filters')}</span>
           </button>
         </div>
 
@@ -119,22 +128,22 @@ export function CollectionPage({
           <aside className={`lg:w-64 flex-shrink-0 ${showFilters ? 'block' : 'hidden lg:block'}`}>
             <div className="space-y-8 sticky top-28">
               {types.length > 2 && (
-                <FilterGroup title="Type">
-                  {types.map((t) => (
+                <FilterGroup title={t('filterType')}>
+                  {types.map((ty) => (
                     <Radio
-                      key={t}
+                      key={ty}
                       name="type"
-                      value={t}
-                      checked={type === t}
+                      value={ty}
+                      checked={type === ty}
                       onChange={setType}
-                      label={t === 'all' ? 'All' : formatType(t as ProductType)}
+                      label={ty === 'all' ? t('all') : formatType(ty as ProductType, lang)}
                     />
                   ))}
                 </FilterGroup>
               )}
 
               {families.length > 2 && (
-                <FilterGroup title="Scent family">
+                <FilterGroup title={t('filterFamily')}>
                   {families.map((f) => (
                     <Radio
                       key={f}
@@ -142,29 +151,31 @@ export function CollectionPage({
                       value={f}
                       checked={family === f}
                       onChange={setFamily}
-                      label={f}
+                      label={f === 'all' ? t('all') : f}
+                      capitalise
                     />
                   ))}
                 </FilterGroup>
               )}
 
               {showGenderFilter && (
-                <FilterGroup title="For">
-                  {['all', 'women', 'men', 'unisex'].map((g) => (
+                <FilterGroup title={t('filterFor')}>
+                  {(['all', 'women', 'men', 'unisex'] as const).map((g) => (
                     <Radio
                       key={g}
                       name="gender"
                       value={g}
                       checked={gender === g}
                       onChange={setGender}
-                      label={g}
+                      label={g === 'all' ? t('all') : t(g)}
+                      capitalise
                     />
                   ))}
                 </FilterGroup>
               )}
 
-              <FilterGroup title="Price">
-                {BANDS.map((b) => (
+              <FilterGroup title={t('filterPrice')}>
+                {bands.map((b) => (
                   <Radio
                     key={b.key}
                     name="price"
@@ -185,7 +196,7 @@ export function CollectionPage({
                 }}
                 className="text-xs text-muted hover:text-gold transition-colors tracking-[0.16em] uppercase"
               >
-                Clear all filters
+                {t('clearFilters')}
               </button>
             </div>
           </aside>
@@ -199,7 +210,7 @@ export function CollectionPage({
               </div>
             ) : (
               <div className="text-center py-16">
-                <p className="text-muted">Nothing matches those filters yet.</p>
+                <p className="text-muted">{t('noMatch')}</p>
               </div>
             )}
           </div>

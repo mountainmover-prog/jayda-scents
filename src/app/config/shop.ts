@@ -25,9 +25,13 @@ export const WHATSAPP_NUMBER = '255657553256';
  */
 export const LIPA_NAME = 'SALHA SULEIMAN SAIDI';
 
-/** Shown under the Lipa namba on the checkout page. Keep it short. */
-export const DELIVERY_NOTE =
-  'Delivery is arranged once we have your area — we will confirm the cost on WhatsApp before you pay.';
+/**
+ * Social links shown in the footer. Leave a value empty and that icon simply
+ * does not appear — no dead links.
+ * Full URLs, e.g. 'https://www.instagram.com/jaydascents'
+ */
+export const INSTAGRAM_URL = '';
+export const TIKTOK_URL = '';
 
 export const isCheckoutConfigured = (): boolean =>
   LIPA_NAMBA.trim().length > 0 && WHATSAPP_NUMBER.trim().length > 0;
