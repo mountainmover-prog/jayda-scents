@@ -1,6 +1,12 @@
 import { Link } from 'react-router';
 import { useLang } from '../i18n/LanguageContext';
 
+/**
+ * The backdrop is built from the shop's own bottles, not stock photography, so
+ * what a visitor sees first is what they can actually buy. The image already
+ * carries its own darkening through the middle, which is why the overlay here is
+ * light — it only guards the type against unusually bright crops on wide screens.
+ */
 export function Hero() {
   const { t } = useLang();
 
@@ -8,21 +14,24 @@ export function Hero() {
     <div className="relative h-[70vh] min-h-[500px] bg-ink overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            'url(https://images.unsplash.com/photo-1767458770505-4daf3e3a3f77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJmdW1lJTIwYm90dGxlcyUyMGNvbGxlY3Rpb24lMjBsdXh1cnl8ZW58MXx8fHwxNzcxNTY5NzY3fDA&ixlib=rb-4.1.0&q=80&w=1080)',
-        }}
+        style={{ backgroundImage: 'url(/images/hero-jayda.jpg)' }}
       />
       <div
         className="absolute inset-0"
-        style={{ background: 'linear-gradient(rgba(11,9,7,0.65), rgba(11,9,7,0.45))' }}
+        style={{ background: 'linear-gradient(rgba(11,9,7,0.45), rgba(11,9,7,0.25))' }}
       />
       <div className="relative h-full flex items-center justify-center text-center px-4">
         <div className="max-w-3xl">
-          <h1 className="font-display text-4xl md:text-6xl text-cream tracking-wide mb-6 leading-[1.15] uppercase">
+          <h1
+            className="font-display text-4xl md:text-6xl text-cream tracking-wide mb-6 leading-[1.15] uppercase"
+            style={{ textShadow: '0 2px 18px rgba(11,9,7,0.55)' }}
+          >
             {t('heroTitle')}
           </h1>
-          <p className="text-base md:text-lg text-cream/80 font-body font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p
+            className="text-base md:text-lg text-cream/90 font-body font-light mb-10 max-w-xl mx-auto leading-relaxed"
+            style={{ textShadow: '0 1px 14px rgba(11,9,7,0.75)' }}
+          >
             {t('heroSub')}
           </p>
           <Link

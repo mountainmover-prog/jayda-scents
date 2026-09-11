@@ -30,8 +30,8 @@ export const LIPA_NAME = 'SALHA SULEIMAN SAIDI';
  * does not appear — no dead links.
  * Full URLs, e.g. 'https://www.instagram.com/jaydascents'
  */
-export const INSTAGRAM_URL = '';
-export const TIKTOK_URL = '';
+export const INSTAGRAM_URL = 'https://www.instagram.com/unapologetic_baybe';
+export const TIKTOK_URL = 'https://www.tiktok.com/@jaydascents';
 
 export const isCheckoutConfigured = (): boolean =>
   LIPA_NAMBA.trim().length > 0 && WHATSAPP_NUMBER.trim().length > 0;

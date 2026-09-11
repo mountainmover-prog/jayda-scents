@@ -1,30 +1,15 @@
 import { Link } from 'react-router';
 import { Hero } from '../components/Hero';
 import { ProductCard } from '../components/ProductCard';
-import { SocialLinks } from '../components/SocialLinks';
-import { featuredProducts, products, bodyMists } from '../data/products';
+import { Testimonials } from '../components/Testimonials';
+import { featuredProducts, products } from '../data/products';
 import { useLang } from '../i18n/LanguageContext';
 import { StringKey } from '../i18n/strings';
 
 const categories: { to: string; key: StringKey; image: string }[] = [
-  {
-    to: '/women',
-    key: 'navWomen',
-    image:
-      'url(https://images.unsplash.com/photo-1508771400123-e194ad75c0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwcGVyZnVtZSUyMGJvdHRsZSUyMHBpbmt8ZW58MXx8fHwxNzcxNDkwOTE0fDA&ixlib=rb-4.1.0&q=80&w=1080)',
-  },
-  {
-    to: '/men',
-    key: 'navMen',
-    image:
-      'url(https://images.unsplash.com/photo-1554948419-1939083b12cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBwZXJmdW1lJTIwYm90dGxlJTIwYmxhY2t8ZW58MXx8fHwxNzcxNTY5NzY2fDA&ixlib=rb-4.1.0&q=80&w=1080)',
-  },
-  {
-    to: '/unisex',
-    key: 'navUnisex',
-    image:
-      'url(https://images.unsplash.com/photo-1761778304143-4c89e7dd2457?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNpZ25lciUyMHBlcmZ1bWUlMjBib3R0bGUlMjB3aGl0ZXxlbnwxfHx8fDE3NzE1MzA5MDh8MA&ixlib=rb-4.1.0&q=80&w=1080)',
-  },
+  { to: '/women', key: 'navWomen', image: 'url(/images/category-women.jpg)' },
+  { to: '/men', key: 'navMen', image: 'url(/images/category-men.jpg)' },
+  { to: '/unisex', key: 'navUnisex', image: 'url(/images/category-unisex.jpg)' },
 ];
 
 export function HomePage() {
@@ -91,69 +76,8 @@ export function HomePage() {
         </div>
       </section>
 
-      <footer className="bg-ink text-cream py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-            <div>
-              <h3 className="font-display text-lg text-cream mb-4 uppercase">{t('footerAbout')}</h3>
-              <p className="text-sm text-cream/60 font-light leading-relaxed">
-                {t('footerAboutText')}
-              </p>
-            </div>
-            <div>
-              <h3 className="font-display text-lg text-cream mb-4 uppercase">
-                {t('footerService')}
-              </h3>
-              <ul className="space-y-2 text-sm text-cream/60 font-light">
-                <li>{t('footerContact')}</li>
-                <li>{t('footerDeliveryReturns')}</li>
-                <li>{t('footerFaq')}</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-display text-lg text-cream mb-4 uppercase">{t('footerShop')}</h3>
-              <ul className="space-y-2 text-sm text-cream/60 font-light">
-                <li>
-                  <Link to="/shop" className="hover:text-gold transition-colors">
-                    {t('footerAllFragrances')}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/women" className="hover:text-gold transition-colors">
-                    {t('footerForWomen')}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/men" className="hover:text-gold transition-colors">
-                    {t('footerForMen')}
-                  </Link>
-                </li>
-                {bodyMists.length > 0 && (
-                  <li>
-                    <Link to="/body-mists" className="hover:text-gold transition-colors">
-                      {t('navBodyMists')}
-                    </Link>
-                  </li>
-                )}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-display text-lg text-cream mb-4 uppercase">{t('footerFollow')}</h3>
-              <p className="text-sm text-cream/60 font-light mb-4">{t('footerFollowText')}</p>
-              <SocialLinks />
-            </div>
-          </div>
+      <Testimonials />
 
-          <div className="mt-10 pt-8 border-t border-cream/10">
-            <p className="text-xs text-cream/50 font-light leading-relaxed max-w-3xl mb-6">
-              {t('deliveryPolicy')}
-            </p>
-            <p className="text-center text-sm text-cream/40 font-light">
-              © 2026 Jayda Scents. {t('rightsReserved')}
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
