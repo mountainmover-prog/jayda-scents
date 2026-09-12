@@ -4,10 +4,21 @@ import { useLang } from '../i18n/LanguageContext';
 /**
  * Renders nothing at all while there is no real feedback to show — an empty
  * "what customers say" heading is worse than no section.
+ *
+ * The column count follows the number of quotes so a single one is never left
+ * stranded in a three-wide row with two gaps beside it.
  */
 export function Testimonials() {
   const { t } = useLang();
-  if (testimonials.length === 0) return null;
+  const items = testimonials.slice(0, 6);
+  if (items.length === 0) return null;
+
+  const columns =
+    items.length === 1
+      ? 'grid-cols-1 max-w-xl mx-auto'
+      : items.length === 2
+      ? 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto'
+      : 'grid-cols-1 md:grid-cols-3';
 
   return (
     <section className="py-20 bg-cream/40">
@@ -17,8 +28,8 @@ export function Testimonials() {
         </h2>
         <div className="w-12 h-px bg-gold mx-auto mb-12" />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {testimonials.slice(0, 6).map((item, i) => (
+        <div className={`grid gap-6 lg:gap-8 ${columns}`}>
+          {items.map((item, i) => (
             <figure
               key={`${item.name}-${i}`}
               className="bg-bone border border-rule/60 rounded-lg p-7 flex flex-col"

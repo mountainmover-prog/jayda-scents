@@ -5,16 +5,20 @@
  * the WhatsApp message, the Instagram comment or the TikTok reply it came from,
  * and keep their words — light tidying of spelling is fine, rewriting is not.
  *
+ * Quotes are NOT translated. A customer who writes in a mix of Swahili and
+ * English is quoted in that mix on both language settings, because a translated
+ * quote is no longer a quote. It also happens to be how the shop's customers
+ * actually talk.
+ *
  * Invented reviews are the fastest way to lose a customer who spots them, and in
  * many places they are illegal. An empty list is honest; a made-up one is not.
  *
- * While this list is empty the testimonials section does not render at all, so
- * the shop simply does not have that section yet.
+ * While this list is empty the testimonials section does not render at all.
  *
  * To add one:
  *   { quote: 'exactly what they wrote', name: 'Amina', area: 'Masaki', source: 'whatsapp' }
  *
- * `area` and `product` are optional. `source` is optional and is not shown on the
+ * `area`, `product` and `source` are optional. `source` is never shown on the
  * site — it is there so you can find the original message again later.
  */
 export interface Testimonial {
@@ -31,5 +35,26 @@ export interface Testimonial {
 }
 
 export const testimonials: Testimonial[] = [
-  // Nothing here yet — add real messages as they come in.
+  {
+    quote: 'Asante bby imefika. Inanukia atr 🙌',
+    name: 'Edyna',
+    product: 'Marshmallow Blush',
+    source: 'whatsapp',
+  },
+  // Second customer, on Club de Nuit Malyka. Her words are ready to go — the
+  // only thing missing is the name she is happy to be credited under, so this
+  // stays commented out rather than going up as "Anonymous".
+  //
+  // {
+  //   quote:
+  //     'Nimeipokea 😍🔥 Wueeh hii perfume imenikamata! Harufu yake ni addictive na inakaa muda mrefu sana 😭❤️ Kila mtu anauliza nimepaka nini 😂 Definitely coming back for more 🤗',
+  //   name: '',
+  //   product: 'Club de Nuit Malyka',
+  //   source: 'whatsapp',
+  // },
+  //
+  // She sent a second message a minute later, if you prefer this one:
+  // 'Girl 😭🔥 hii perfume ni hatari! Harufu yake ni classy, sweet na inastay
+  //  for hours 😍❤️ Nimepata compliments already 😂 definitely nitarudi tena
+  //  for another one'
 ];

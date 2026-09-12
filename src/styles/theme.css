@@ -54,6 +54,21 @@
   --muted: #6B6259;
   --rule: #E3DCD1;
 
+  /* Same palette as channel triplets. Tailwind needs these for opacity
+     modifiers: text-cream/60 compiles to rgb(var(--cream-rgb) / 0.6), and a
+     hex value in that slot makes the whole declaration invalid, so the
+     colour is silently dropped. Keep both in step. */
+  --ink-rgb: 11 9 7;
+  --surface-rgb: 21 17 13;
+  --cream-rgb: 245 239 228;
+  --gold-rgb: 228 162 82;
+  --gold-light-rgb: 251 197 110;
+  --bone-rgb: 250 247 242;
+  --charcoal-rgb: 26 22 19;
+  --bronze-rgb: 159 98 25;
+  --muted-rgb: 107 98 89;
+  --rule-rgb: 227 220 209;
+
   /* Typography */
   --font-display: 'Italiana', serif;
   --font-body: 'Jost', sans-serif;
