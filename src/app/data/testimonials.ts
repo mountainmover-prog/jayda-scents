@@ -41,19 +41,15 @@ export const testimonials: Testimonial[] = [
     product: 'Marshmallow Blush',
     source: 'whatsapp',
   },
-  // Second customer, on Club de Nuit Malyka. Her words are ready to go — the
-  // only thing missing is the name she is happy to be credited under, so this
-  // stays commented out rather than going up as "Anonymous".
-  //
-  // {
-  //   quote:
-  //     'Nimeipokea 😍🔥 Wueeh hii perfume imenikamata! Harufu yake ni addictive na inakaa muda mrefu sana 😭❤️ Kila mtu anauliza nimepaka nini 😂 Definitely coming back for more 🤗',
-  //   name: '',
-  //   product: 'Club de Nuit Malyka',
-  //   source: 'whatsapp',
-  // },
-  //
-  // She sent a second message a minute later, if you prefer this one:
+  {
+    quote:
+      'Nimeipokea 😍🔥 Wueeh hii perfume imenikamata! Harufu yake ni addictive na inakaa muda mrefu sana 😭❤️ Kila mtu anauliza nimepaka nini 😂 Definitely coming back for more 🤗',
+    name: 'Fathiyyah',
+    product: 'Club de Nuit Malyka',
+    source: 'whatsapp',
+  },
+  // Fathiyyah sent a second message a minute later. Swap it in for the one above
+  // if you would rather lead with this wording:
   // 'Girl 😭🔥 hii perfume ni hatari! Harufu yake ni classy, sweet na inastay
   //  for hours 😍❤️ Nimepata compliments already 😂 definitely nitarudi tena
   //  for another one'

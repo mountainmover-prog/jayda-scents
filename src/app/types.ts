@@ -1,5 +1,11 @@
 export type Category = 'perfume' | 'body-mist';
-export type ProductType = 'edp' | 'oil' | 'mist';
+/**
+ * Concentration, as printed on the box. `edt` and `extrait` were added when the
+ * Armaf Club de Nuit Intense Man box turned out to read EAU DE TOILETTE and the
+ * Afnan 9PM Night Out box extrait de parfum — the two ends of the strength
+ * range, and the difference a customer paying TZS 250,000 is paying for.
+ */
+export type ProductType = 'edp' | 'edt' | 'extrait' | 'oil' | 'mist';
 export type Gender = 'men' | 'women' | 'unisex';
 
 /** One sellable size of a product. Price lives here, not on the product. */

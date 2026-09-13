@@ -38,8 +38,16 @@ export function Footer() {
                   {t('footerContact')}
                 </a>
               </li>
-              <li>{t('footerDeliveryReturns')}</li>
-              <li>{t('footerFaq')}</li>
+              <li>
+                <Link to="/faq#delivery" className="hover:text-gold transition-colors">
+                  {t('footerDeliveryReturns')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="hover:text-gold transition-colors">
+                  {t('footerFaq')}
+                </Link>
+              </li>
             </ul>
           </div>
 

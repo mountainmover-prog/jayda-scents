@@ -9,6 +9,7 @@ import { BodyMistsPage } from './pages/BodyMistsPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
+import { FaqPage } from './pages/FaqPage';
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
       { path: 'product/:slug', Component: ProductDetailPage },
       { path: 'cart', Component: CartPage },
       { path: 'checkout', Component: CheckoutPage },
+      { path: 'faq', Component: FaqPage },
     ],
   },
 ]);

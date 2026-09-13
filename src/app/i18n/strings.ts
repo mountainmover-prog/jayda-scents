@@ -37,6 +37,13 @@ export const en = {
   footerAllFragrances: 'All fragrances',
   footerForWomen: 'For women',
   footerForMen: 'For men',
+  faqTitle: 'Questions & answers',
+  faqIntro:
+    'How ordering, delivery and returns work at Jayda Scents. If your question is not here, message us on WhatsApp and we will answer.',
+  faqStillStuck: 'Still need help?',
+  faqStillStuckText:
+    'Message us and we will answer. We confirm every order on WhatsApp anyway, so nothing is too small to ask.',
+  faqAskOnWhatsApp: 'Ask us on WhatsApp',
   testimonialsTitle: 'What customers say',
   footerFollow: 'Follow us',
   footerFollowText: 'New arrivals and offers, now and then.',
@@ -137,6 +144,8 @@ export const en = {
 
   // product types
   typeEdp: 'Eau de Parfum',
+  typeEdt: 'Eau de Toilette',
+  typeExtrait: 'Extrait de Parfum',
   typeOil: 'Perfume oil',
   typeMist: 'Body mist',
 };
@@ -171,6 +180,13 @@ export const sw: typeof en = {
   footerAllFragrances: 'Manukato yote',
   footerForWomen: 'Za wanawake',
   footerForMen: 'Za wanaume',
+  faqTitle: 'Maswali na majibu',
+  faqIntro:
+    'Jinsi ya kuagiza, usafirishaji na marejesho katika Jayda Scents. Kama swali lako halipo hapa, tutumie ujumbe WhatsApp na tutakujibu.',
+  faqStillStuck: 'Bado unahitaji msaada?',
+  faqStillStuckText:
+    'Tutumie ujumbe na tutakujibu. Kila oda tunaithibitisha kwa WhatsApp, hivyo hakuna swali dogo sana.',
+  faqAskOnWhatsApp: 'Tuulize WhatsApp',
   testimonialsTitle: 'Maoni ya wateja',
   footerFollow: 'Tufuate',
   footerFollowText: 'Bidhaa mpya na ofa, mara kwa mara.',
@@ -263,7 +279,11 @@ export const sw: typeof en = {
   orderSentPay: 'Lipa {v} kwenda Lipa namba {n}, kisha tutumie namba ya uthibitisho kwa WhatsApp.',
   orderSentDelivery: 'Tutakuthibitishia gharama ya usafirishaji kwa eneo lako kabla ya kutuma.',
 
+  // The French concentration names are what the boxes print and what customers
+  // say out loud in both languages, so they are not translated.
   typeEdp: 'Eau de Parfum',
+  typeEdt: 'Eau de Toilette',
+  typeExtrait: 'Extrait de Parfum',
   typeOil: 'Mafuta ya manukato',
   typeMist: 'Body mist',
 };

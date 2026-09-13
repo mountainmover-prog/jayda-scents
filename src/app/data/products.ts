@@ -131,7 +131,7 @@ export const products: Product[] = [
     featured: false,
     variants: [
       {
-        sku: "AFN-SCE-100",
+        sku: "AFN-SCE-050",
         sizeLabel: "50ml",
         sizeMl: 50,
         priceTzs: 50000,
@@ -158,11 +158,18 @@ export const products: Product[] = [
     featured: true,
     variants: [
       {
-        sku: "LAT-YAR-100",
+        sku: "LAT-YAR-050",
         sizeLabel: "50ml",
         sizeMl: 50,
         priceTzs: 30000,
         stock: 15
+      },
+      {
+        sku: "LAT-YAR-100",
+        sizeLabel: "100ml",
+        sizeMl: 100,
+        priceTzs: 55000,
+        stock: 6
       }
     ]
   },
