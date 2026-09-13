@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { useLang } from '../i18n/LanguageContext';
+import { products } from '../data/products';
 
 /**
  * The backdrop is built from the shop's own bottles, not stock photography, so
@@ -46,11 +47,37 @@ export function Hero() {
           >
             {t('heroSub')}
           </p>
+          {/*
+            Sizing is set by min-height, not padding, so the target is a
+            guaranteed 56px on phones — above the 44pt/48dp minimum — rather
+            than the 40px the old px-10 py-3 produced at every width. It is
+            slightly smaller on desktop, where a pointer is more precise than a
+            thumb.
+
+            The pressed state is a scale, not a colour. Bronze, the only darker
+            gold in the palette, gives 4.33:1 against cream and 4.01:1 against
+            ink — both under AA — so pressing it would briefly make the label
+            harder to read. Staying on gold-light holds 12.6:1 throughout and
+            the shrink is the tactile cue instead.
+
+            The focus ring is cream and offset outward onto the dark scrim
+            (15.1:1) — a gold ring on a gold button would be invisible.
+
+            Tracking is 0.08em here, half the 0.16em used elsewhere. The house
+            spacing is fine on a two-word label; on a five-word one at 12px it
+            pushes the letters apart faster than the eye groups them into words,
+            and the button grows wide enough to crowd a 360px screen. This is
+            the one place the label is long, so it is the one place that steps
+            down.
+
+            The count comes from the catalogue, not from the copy, so it cannot
+            fall out of step with what is actually on the shop.
+          */}
           <Link
             to="/shop"
-            className="inline-block bg-gold text-ink px-10 py-3 text-xs tracking-[0.16em] hover:bg-gold-light transition-colors duration-300 uppercase"
+            className="inline-flex items-center justify-center text-center bg-gold text-ink min-h-[56px] md:min-h-[52px] px-8 md:px-12 py-3 text-xs md:text-sm tracking-[0.08em] uppercase transition duration-200 hover:bg-gold-light active:bg-gold-light active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream"
           >
-            {t('heroCta')}
+            {t('heroCta', { n: products.length })}
           </Link>
         </div>
       </div>

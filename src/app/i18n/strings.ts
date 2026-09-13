@@ -18,8 +18,15 @@ export const en = {
 
   // hero
   heroTitle: 'Discover your signature scent',
-  heroSub: 'Eau de parfum, perfume oils and body mists, chosen for how long they last and what they cost.',
-  heroCta: 'Shop now',
+  // Named brands replace "perfume oils and body mists": the shop stocks neither,
+  // so two of the three things the first sentence promised did not exist. No
+  // product count here on purpose — a number in a string drifts out of date the
+  // next time the catalogue changes, and nothing warns you when it does.
+  heroSub: 'Eau de parfum from Lattafa, Afnan, Armaf and more, chosen for how long they last and what they cost.',
+  // {n} is filled from the catalogue at render time, never typed in. A count
+  // written into the copy would be wrong the next time a product is added and
+  // nothing would warn you; this one cannot drift.
+  heroCta: 'Browse all {n} fragrances',
 
   // home
   shopBy: 'Shop by',
@@ -162,8 +169,8 @@ export const sw: typeof en = {
   cart: 'Kikapu',
 
   heroTitle: 'Tafuta harufu yako',
-  heroSub: 'Eau de parfum, mafuta ya manukato na body mist — zilizochaguliwa kwa kudumu na kwa bei nzuri.',
-  heroCta: 'Nunua sasa',
+  heroSub: 'Eau de parfum kutoka Lattafa, Afnan, Armaf na nyingine — zilizochaguliwa kwa kudumu na kwa bei nzuri.',
+  heroCta: 'Tazama manukato yote {n}',
 
   shopBy: 'Nunua kwa',
   explore: 'Angalia',
