@@ -136,6 +136,13 @@ export const products: Product[] = [
         sizeMl: 50,
         priceTzs: 50000,
         stock: 10
+      },
+      {
+        sku: "AFN-SUP-100",
+        sizeLabel: "100ml",
+        sizeMl: 100,
+        priceTzs: 230000,
+        stock: 8
       }
     ]
   },
@@ -169,7 +176,7 @@ export const products: Product[] = [
         sizeLabel: "100ml",
         sizeMl: 100,
         priceTzs: 55000,
-        stock: 6
+        stock: 8
       }
     ]
   },
@@ -764,6 +771,114 @@ export const products: Product[] = [
         sizeMl: 50,
         priceTzs: 25000,
         stock: 15
+      }
+    ]
+  },
+  {
+    slug: "afnan-9pm-rebel",
+    name: "9PM Rebel",
+    brand: "Afnan",
+    category: "perfume",
+    type: "edp",
+    gender: "men",
+    family: "",
+    notes: {
+      top: [],
+      heart: [],
+      base: []
+    },
+    shortDescription: "Afnan 9PM Rebel, eau de parfum, 100ml. We have not written up the notes for this one yet \u2014 message us on WhatsApp and we will tell you how it wears.",
+    longDescription: "",
+    images: ["/images/afnan-9pm-rebel-1.jpg"],
+    featured: false,
+    variants: [
+      {
+        sku: "AFN-NR-100",
+        sizeLabel: "100ml",
+        sizeMl: 100,
+        priceTzs: 180000,
+        stock: 8
+      }
+    ]
+  },
+  {
+    slug: "afnan-9pm-nightout",
+    name: "9PM Night Out",
+    brand: "Afnan",
+    category: "perfume",
+    type: "extrait",
+    gender: "men",
+    family: "",
+    notes: {
+      top: [],
+      heart: [],
+      base: []
+    },
+    shortDescription: "Afnan 9PM Night Out, extrait de parfum, 100ml. Extrait is a heavier concentration than eau de parfum, so it lasts longer on the skin and you need less of it. We have not written up the notes for this one yet \u2014 message us on WhatsApp and we will tell you how it wears.",
+    longDescription: "",
+    images: ["/images/afnan-9pm-nightout-1.jpg"],
+    featured: false,
+    variants: [
+      {
+        sku: "AFN-NN-100",
+        sizeLabel: "100ml",
+        sizeMl: 100,
+        priceTzs: 250000,
+        stock: 8
+      }
+    ]
+  },
+  {
+    slug: "armaf-club-de-nuit-intense-man",
+    name: "Club de Nuit Intense Man",
+    brand: "Armaf",
+    category: "perfume",
+    type: "edt",
+    gender: "men",
+    family: "",
+    notes: {
+      top: [],
+      heart: [],
+      base: []
+    },
+    shortDescription: "Armaf Club de Nuit Intense Man, eau de toilette, 105ml. We have not written up the notes for this one yet \u2014 message us on WhatsApp and we will tell you how it wears.",
+    longDescription: "",
+    images: ["/images/armaf-club-de-nuit-intense-man-1.jpg"],
+    featured: false,
+    variants: [
+      {
+        sku: "ARM-CDN-105",
+        sizeLabel: "105ml",
+        sizeMl: 105,
+        priceTzs: 170000,
+        stock: 8
+      }
+    ]
+  },
+  {
+    slug: "lattafa-yara-candy",
+    name: "Yara Candy",
+    brand: "Lattafa",
+    category: "perfume",
+    type: "edp",
+    gender: "women",
+    family: "",
+    notes: {
+      top: [],
+      heart: [],
+      base: []
+    },
+    shortDescription: "Lattafa Yara Candy, eau de parfum, 100ml \u2014 the Candy bottle in the Yara line. We have not written up the notes for this one yet \u2014 message us on WhatsApp and we will tell you how it wears.",
+    longDescription: "",
+    images: ["/images/lattafa-yara-candy-1.jpg"],
+    featured: false,
+    variants: [
+      {
+        sku: "LAT-YC-100",
+        sizeLabel: "100ml",
+        sizeMl: 100,
+        priceTzs: 70000,
+        stock: 8
       }
     ]
   },
