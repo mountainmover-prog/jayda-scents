@@ -34,8 +34,11 @@ export const en = {
   featured: 'Featured',
   viewAll: 'View all',
   footerAbout: 'About',
+  // Same correction as heroSub: the shop stocks no perfume oils and no body
+  // mists. This copy is on every page of the site, so it was the claim a
+  // visitor met most often.
   footerAboutText:
-    'Eau de parfum, perfume oils and body mists from Lattafa, Armaf, Afnan and more — chosen for how long they last and what they cost.',
+    'Eau de parfum from Lattafa, Afnan, Armaf and more, chosen for how long they last and what they cost.',
   footerService: 'Customer service',
   footerContact: 'Contact us',
   footerDeliveryReturns: 'Delivery & returns',
@@ -178,7 +181,7 @@ export const sw: typeof en = {
   viewAll: 'Ona zote',
   footerAbout: 'Kuhusu',
   footerAboutText:
-    'Eau de parfum, mafuta ya manukato na body mist kutoka Lattafa, Armaf, Afnan na nyingine — zilizochaguliwa kwa kudumu na kwa bei nzuri.',
+    'Eau de parfum kutoka Lattafa, Afnan, Armaf na nyingine — zilizochaguliwa kwa kudumu na kwa bei nzuri.',
   footerService: 'Huduma kwa wateja',
   footerContact: 'Wasiliana nasi',
   footerDeliveryReturns: 'Usafirishaji na marejesho',
