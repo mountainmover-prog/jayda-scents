@@ -41,7 +41,7 @@ export const TIKTOK_URL = 'https://www.tiktok.com/@jaydascents';
  * have to name the same host: a canonical pointing at bolt.host after the move
  * would tell Google the real shop is on the old address.
  */
-export const SITE_URL = 'https://mountainmover-prog-j-0gtp.bolt.host';
+export const SITE_URL = 'https://mountainmover-prog-j-dv1c.bolt.host';
 
 export const isCheckoutConfigured = (): boolean =>
   LIPA_NAMBA.trim().length > 0 && WHATSAPP_NUMBER.trim().length > 0;
