@@ -1,14 +1,30 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router';
-import { ArrowLeft, ShoppingBag } from 'lucide-react';
+import { ArrowLeft, ShoppingBag, MessageCircle } from 'lucide-react';
 import { findProduct } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { formatPrice, formatType } from '../utils/format';
 import { useLang } from '../i18n/LanguageContext';
+import { ratingFor, reviewsFor } from '../data/reviews';
+import { recommendationsFor } from '../data/recommend';
+import { Stars } from '../components/Stars';
+import { ProductCard } from '../components/ProductCard';
+import { WHATSAPP_NUMBER } from '../config/shop';
 
+/**
+ * Keyed by slug so that moving from one product to another (a "You may also
+ * like" card, say) mounts a fresh page. Without the key React reuses the same
+ * component and keeps its state: pick the 100ml Yara, click a suggestion that
+ * only comes in one size, and the page asks for variants[1] of a product that
+ * has one variant, which crashes it. The key also clears the "Added" flash.
+ */
 export function ProductDetailPage() {
   const { slug } = useParams();
+  return <ProductDetail key={slug} slug={slug} />;
+}
+
+function ProductDetail({ slug }: { slug?: string }) {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const { t, lang } = useLang();
@@ -34,6 +50,12 @@ export function ProductDetailPage() {
   }
 
   const variant = product.variants[variantIndex];
+  const rating = ratingFor(product.slug);
+  const productReviews = reviewsFor(product.slug);
+  const suggestions = recommendationsFor(product);
+  const reviewHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    t('reviewMessage', { p: `${product.brand} ${product.name}` })
+  )}`;
   const soldOut = variant.stock === 0;
   const lowStock = variant.stock > 0 && variant.stock <= 3;
   const hasNotes =
@@ -85,9 +107,28 @@ export function ProductDetailPage() {
                   {formatType(product.type, lang)}
                 </p>
               </div>
-              <h1 className="font-display text-3xl md:text-4xl text-charcoal mb-4">
+              <h1 className="font-display text-3xl md:text-4xl text-charcoal mb-3">
                 {product.name}
               </h1>
+              <div className="mb-4 text-xs">
+                {rating ? (
+                  <a href="#reviews" className="inline-block hover:opacity-80 transition-opacity">
+                    <Stars summary={rating} />
+                  </a>
+                ) : (
+                  <p className="text-muted">
+                    {t('noReviewsYet')}{' '}
+                    <a
+                      href={reviewHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-bronze underline underline-offset-2 hover:text-charcoal transition-colors"
+                    >
+                      {t('leaveReview')}
+                    </a>
+                  </p>
+                )}
+              </div>
               <p className="text-xl text-gold mb-4 tracking-wide">
                 {formatPrice(variant.priceTzs)}
                 {variant.wasPriceTzs && (
@@ -163,6 +204,52 @@ export function ProductDetailPage() {
             </div>
           </div>
         </div>
+
+        {productReviews.length > 0 && rating && (
+          <section id="reviews" className="mt-20 scroll-mt-28 max-w-3xl">
+            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2 mb-6">
+              <h2 className="font-display text-2xl text-charcoal uppercase">{t('reviewsHeading')}</h2>
+              <Stars summary={rating} />
+            </div>
+            <ul className="border-t border-rule">
+              {productReviews.map((r, i) => (
+                <li key={`${r.name}-${r.date ?? i}`} className="py-6 border-b border-rule">
+                  <Stars summary={{ average: r.rating, count: 1 }} size="sm" showCount={false} />
+                  {r.quote && (
+                    <p className="mt-3 text-charcoal/80 font-light leading-relaxed">{r.quote}</p>
+                  )}
+                  <p className="mt-3 text-[11px] tracking-[0.12em] text-muted uppercase">
+                    {r.name}
+                    {r.date && <span className="normal-case tracking-normal"> · {r.date}</span>}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={reviewHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-xs text-bronze hover:text-charcoal transition-colors"
+            >
+              <MessageCircle className="w-4 h-4" aria-hidden="true" />
+              {t('leaveReview')}
+            </a>
+          </section>
+        )}
+
+        {suggestions.length > 0 && (
+          <section className="mt-20" aria-labelledby="also-like">
+            <h2 id="also-like" className="font-display text-2xl text-charcoal uppercase mb-2">
+              {t('youMayAlsoLike')}
+            </h2>
+            <div className="w-12 h-px bg-gold mb-8" />
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6">
+              {suggestions.map((p) => (
+                <ProductCard key={p.slug} product={p} />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   );

@@ -4,6 +4,8 @@ import { priceFrom, totalStock } from '../data/products';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { formatPrice, formatType } from '../utils/format';
 import { useLang } from '../i18n/LanguageContext';
+import { ratingFor } from '../data/reviews';
+import { Stars } from './Stars';
 
 interface ProductCardProps {
   product: Product;
@@ -14,6 +16,8 @@ export function ProductCard({ product }: ProductCardProps) {
   const from = priceFrom(product);
   const multipleSizes = product.variants.length > 1;
   const soldOut = totalStock(product) === 0;
+  // Nothing at all when unrated: an empty row of stars reads as "rated zero".
+  const rating = ratingFor(product.slug);
 
   return (
     <Link to={`/product/${product.slug}`} className="group">
@@ -41,6 +45,11 @@ export function ProductCard({ product }: ProductCardProps) {
           </p>
         </div>
         <h3 className="font-display text-lg text-charcoal mt-1">{product.name}</h3>
+        {rating && (
+          <div className="mt-1">
+            <Stars summary={rating} size="sm" />
+          </div>
+        )}
         <p className="text-sm text-gold mt-1 tracking-wide">
           {multipleSizes && <span className="text-muted">{t('from')} </span>}
           {formatPrice(from)}

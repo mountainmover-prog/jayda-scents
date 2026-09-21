@@ -1,6 +1,7 @@
 import { Outlet, ScrollRestoration } from 'react-router';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { Seo } from '../components/Seo';
 
 /**
  * ScrollRestoration is not optional here, and its absence was a real bug.
@@ -26,6 +27,7 @@ export function RootLayout() {
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollRestoration />
+      <Seo />
       <Header />
       <main className="flex-1">
         <Outlet />

@@ -102,6 +102,16 @@ export const en = {
   labelDelivery: 'Delivery',
   deliveryShort: 'Paid by you, arranged when you order',
 
+  // reviews: every figure comes from src/app/data/reviews.ts, never typed here
+  reviewsHeading: 'Reviews',
+  reviewCountOne: '1 review',
+  reviewCountMany: '{n} reviews',
+  ratedAria: 'Rated {r} out of 5 from {n}',
+  noReviewsYet: 'No reviews yet.',
+  leaveReview: 'Bought this? Tell us how it wears',
+  reviewMessage: 'Hi Jayda Scents, here is my review of {p}. Stars out of 5: ',
+  youMayAlsoLike: 'You may also like',
+
   // cart
   cartTitle: 'Shopping cart',
   cartEmpty: 'Your cart is empty',
@@ -114,7 +124,7 @@ export const en = {
   orderSummary: 'Order summary',
   subtotal: 'Subtotal',
   delivery: 'Delivery',
-  deliveryNotIncluded: 'Not included — see below',
+  deliveryNotIncluded: 'Not included, see below',
   total: 'Total',
   checkout: 'Checkout',
   continueShopping: 'Continue shopping',
@@ -140,7 +150,7 @@ export const en = {
   fillInDetails: 'Please fill in your name, phone number and delivery area.',
   yourOrder: 'Your order',
   payByMobile: 'Pay by mobile money',
-  anyNetwork: 'Pay from any network or bank — M-Pesa, Mixx by Yas, Airtel Money or your bank app.',
+  anyNetwork: 'Pay from any network or bank: M-Pesa, Mixx by Yas, Airtel Money or your bank app.',
   sendFirst: 'Send your order first, then pay and share the confirmation code on WhatsApp.',
   sendOnWhatsapp: 'Send order on WhatsApp',
   copy: 'Copy',
@@ -172,7 +182,7 @@ export const sw: typeof en = {
   cart: 'Kikapu',
 
   heroTitle: 'Tafuta harufu yako',
-  heroSub: 'Eau de parfum kutoka Lattafa, Afnan, Armaf na nyingine — zilizochaguliwa kwa kudumu na kwa bei nzuri.',
+  heroSub: 'Eau de parfum kutoka Lattafa, Afnan, Armaf na nyingine, zilizochaguliwa kwa kudumu na kwa bei nzuri.',
   heroCta: 'Tazama manukato yote {n}',
 
   shopBy: 'Nunua kwa',
@@ -181,7 +191,7 @@ export const sw: typeof en = {
   viewAll: 'Ona zote',
   footerAbout: 'Kuhusu',
   footerAboutText:
-    'Eau de parfum kutoka Lattafa, Afnan, Armaf na nyingine — zilizochaguliwa kwa kudumu na kwa bei nzuri.',
+    'Eau de parfum kutoka Lattafa, Afnan, Armaf na nyingine, zilizochaguliwa kwa kudumu na kwa bei nzuri.',
   footerService: 'Huduma kwa wateja',
   footerContact: 'Wasiliana nasi',
   footerDeliveryReturns: 'Usafirishaji na marejesho',
@@ -243,6 +253,15 @@ export const sw: typeof en = {
   labelDelivery: 'Usafirishaji',
   deliveryShort: 'Hulipwa na wewe, hupangwa wakati wa kuagiza',
 
+  reviewsHeading: 'Maoni ya wateja',
+  reviewCountOne: 'Maoni 1',
+  reviewCountMany: 'Maoni {n}',
+  ratedAria: 'Nyota {r} kati ya 5, maoni {n}',
+  noReviewsYet: 'Bado hakuna maoni.',
+  leaveReview: 'Umeinunua? Tuambie maoni yako',
+  reviewMessage: 'Habari Jayda Scents, haya ni maoni yangu kuhusu {p}. Nyota kati ya 5: ',
+  youMayAlsoLike: 'Unaweza pia kupenda',
+
   cartTitle: 'Kikapu chako',
   cartEmpty: 'Kikapu chako ki tupu',
   cartEmptySub: 'Weka manukato ili uanze',
@@ -254,7 +273,7 @@ export const sw: typeof en = {
   orderSummary: 'Muhtasari wa oda',
   subtotal: 'Jumla ndogo',
   delivery: 'Usafirishaji',
-  deliveryNotIncluded: 'Haijajumuishwa — angalia hapa chini',
+  deliveryNotIncluded: 'Haijajumuishwa, angalia hapa chini',
   total: 'Jumla',
   checkout: 'Kamilisha oda',
   continueShopping: 'Endelea kununua',
@@ -277,7 +296,7 @@ export const sw: typeof en = {
   fillInDetails: 'Tafadhali jaza jina lako, namba ya simu na eneo la kupelekea.',
   yourOrder: 'Oda yako',
   payByMobile: 'Lipa kwa simu',
-  anyNetwork: 'Lipa kutoka mtandao wowote au benki — M-Pesa, Mixx by Yas, Airtel Money au app ya benki yako.',
+  anyNetwork: 'Lipa kutoka mtandao wowote au benki: M-Pesa, Mixx by Yas, Airtel Money au app ya benki yako.',
   sendFirst: 'Tuma oda kwanza, kisha lipa na utume namba ya uthibitisho kwa WhatsApp.',
   sendOnWhatsapp: 'Tuma oda kwa WhatsApp',
   copy: 'Nakili',

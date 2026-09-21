@@ -51,8 +51,8 @@ export const faqSections: FaqSection[] = [
           sw: 'Naweza kutoa maoni baada ya kutumia manukato?',
         },
         a: {
-          en: 'Please do — we ask for it. Send us a message on WhatsApp and tell us how it wore. It is how we decide what to stock next.',
-          sw: 'Tafadhali fanya hivyo — tunayahitaji. Tutumie ujumbe WhatsApp na utuambie yalikaa vipi. Hivi ndivyo tunavyoamua tuweke bidhaa gani baadaye.',
+          en: 'Please do. We ask for it. Send us a message on WhatsApp and tell us how it wore. It is how we decide what to stock next.',
+          sw: 'Tafadhali fanya hivyo. Tunayahitaji. Tutumie ujumbe WhatsApp na utuambie yalikaa vipi. Hivi ndivyo tunavyoamua tuweke bidhaa gani baadaye.',
         },
       },
     ],
@@ -64,8 +64,8 @@ export const faqSections: FaqSection[] = [
       {
         q: { en: 'How long does delivery take?', sw: 'Usafirishaji huchukua muda gani?' },
         a: {
-          en: 'In Zanzibar, the same day. In Dar es Salaam, usually the next day — it depends on what time you order and on the ferry schedule. For upcountry we agree the timing with you on WhatsApp.',
-          sw: 'Zanzibar, siku hiyo hiyo. Dar es Salaam, mara nyingi siku inayofuata — hutegemea saa uliyoagiza na ratiba ya kivuko. Kwa mikoa ya ndani tutakubaliana muda kwa WhatsApp.',
+          en: 'In Zanzibar, the same day. In Dar es Salaam, usually the next day. It depends on what time you order and on the ferry schedule. For upcountry we agree the timing with you on WhatsApp.',
+          sw: 'Zanzibar, siku hiyo hiyo. Dar es Salaam, mara nyingi siku inayofuata. Hutegemea saa uliyoagiza na ratiba ya kivuko. Kwa mikoa ya ndani tutakubaliana muda kwa WhatsApp.',
         },
       },
       {
@@ -91,15 +91,15 @@ export const faqSections: FaqSection[] = [
       {
         q: { en: 'Do you accept returns?', sw: 'Mnakubali marejesho?' },
         a: {
-          en: 'No. We do not take returns on perfume once it has been sold. Before your order goes out we confirm the exact brand and bottle with you more than once, on purpose — it is how we make sure you get what you meant to buy. Please check every detail while we are still talking.',
-          sw: 'Hapana. Hatupokei marejesho ya manukato yaliyokwisha nunuliwa. Kabla oda yako kutoka, tunathibitisha chapa na chupa kamili na wewe zaidi ya mara moja, kwa makusudi — ndivyo tunavyohakikisha unapata ulichokusudia. Tafadhali angalia kila kitu wakati bado tunawasiliana.',
+          en: 'No. We do not take returns on perfume once it has been sold. Before your order goes out we confirm the exact brand and bottle with you more than once, on purpose. It is how we make sure you get what you meant to buy. Please check every detail while we are still talking.',
+          sw: 'Hapana. Hatupokei marejesho ya manukato yaliyokwisha nunuliwa. Kabla oda yako kutoka, tunathibitisha chapa na chupa kamili na wewe zaidi ya mara moja, kwa makusudi. Ndivyo tunavyohakikisha unapata ulichokusudia. Tafadhali angalia kila kitu wakati bado tunawasiliana.',
         },
       },
       {
         q: { en: 'What if the bottle arrives damaged?', sw: 'Je, chupa ikifika imevunjika?' },
         a: {
-          en: 'It very rarely happens. Every package is marked as glass and to be handled with care. If a bottle does arrive broken, tell us straight away with a photo — the claim sits with the courier rather than with us, but we will raise it with them and help you through it.',
-          sw: 'Hutokea mara chache sana. Kila kifurushi tunaandika kuwa ni kioo na kishikwe kwa uangalifu. Kama chupa itafika imevunjika, tuambie mara moja na picha — madai yanakuwa kwa kampuni ya usafirishaji na sio kwetu, lakini tutayafikisha kwao na tutakusaidia.',
+          en: 'It very rarely happens. Every package is marked as glass and to be handled with care. If a bottle does arrive broken, tell us straight away with a photo. The claim sits with the courier rather than with us, but we will raise it with them and help you through it.',
+          sw: 'Hutokea mara chache sana. Kila kifurushi tunaandika kuwa ni kioo na kishikwe kwa uangalifu. Kama chupa itafika imevunjika, tuambie mara moja na picha. Madai yanakuwa kwa kampuni ya usafirishaji na sio kwetu, lakini tutayafikisha kwao na tutakusaidia.',
         },
       },
       {

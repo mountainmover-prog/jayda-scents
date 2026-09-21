@@ -5,9 +5,34 @@
       
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Jayda Scents — Luxury Fragrances</title>
-      <meta name="description" content="Discover and purchase a wide range of perfumes from top brands, tailored for fragrance enthusiasts seeking quality and variety." />
-      <meta name="robots" content="noindex, nofollow" />
+      <title>Jayda Scents | Eau de parfum in Zanzibar and Dar es Salaam</title>
+      <meta name="description" content="Eau de parfum from Lattafa, Afnan, Armaf and more, chosen for how long they last and what they cost. Delivered in Zanzibar, Dar es Salaam and upcountry." />
+      <!--
+        No robots noindex: the shop is open to search engines.
+
+        No canonical tag here on purpose. This file is served for every page of
+        the site, so a canonical written here would name the home page as the
+        original of every product page and Google would drop them all. Each
+        page sets its own canonical from src/app/components/Seo.tsx, which
+        Google reads once the page has rendered.
+
+        The link-preview tags below ARE here, because WhatsApp, Facebook and
+        Instagram read this file without running any JavaScript. They are the
+        same on every page for that reason. %SITE_URL% is filled in at build
+        time from SITE_URL in src/app/config/shop.ts.
+      -->
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Jayda Scents" />
+      <meta property="og:title" content="Jayda Scents | Eau de parfum in Zanzibar and Dar es Salaam" />
+      <meta property="og:description" content="Eau de parfum from Lattafa, Afnan, Armaf and more, chosen for how long they last and what they cost. Delivered in Zanzibar, Dar es Salaam and upcountry." />
+      <meta property="og:image" content="%SITE_URL%/og-image.jpg" />
+      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Jayda Scents logo over the shop's own perfume bottles" />
+      <meta property="og:locale" content="en_GB" />
+      <meta property="og:locale:alternate" content="sw_TZ" />
+      <meta name="twitter:card" content="summary_large_image" />
       <link rel="icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />

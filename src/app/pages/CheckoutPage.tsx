@@ -56,13 +56,13 @@ export function CheckoutPage() {
     const d = dictionaries[lang];
     const lines = cartItems.map(
       (i) =>
-        `• ${i.product.name} (${i.product.brand}) — ${i.variant.sizeLabel} × ${i.quantity} — ${formatPrice(
+        `• ${i.product.name} (${i.product.brand}), ${i.variant.sizeLabel} × ${i.quantity}: ${formatPrice(
           i.variant.priceTzs * i.quantity
         )}`
     );
     const isSw = lang === 'sw';
     return [
-      isSw ? '*Oda mpya — Jayda Scents*' : '*New order — Jayda Scents*',
+      isSw ? '*Jayda Scents: oda mpya*' : '*Jayda Scents: new order*',
       '',
       ...lines,
       '',

@@ -17,7 +17,7 @@ export const products: Product[] = [
       heart: ["Praline", "lavender", "cacao"],
       base: ["Musk", "amber", "vanilla"]
     },
-    shortDescription: "Praline and cacao over warm amber \u2014 sweet, unisex, hard to put down.",
+    shortDescription: "Praline and cacao over warm amber. Sweet, unisex, hard to put down.",
     longDescription: "Angham opens bright with mandarin and ginger before settling into praline, lavender and cacao. The base is soft amber and vanilla musk. Warm and sweet rather than sharp, it wears well on anyone and lasts through a long evening.",
     images: ["/images/clive-dorris-angham-1.jpg"],
     featured: true,
@@ -72,7 +72,7 @@ export const products: Product[] = [
       base: ["Sandalwood", "incense", "amber", "cedar", "patchouli", "labdanum"]
     },
     shortDescription: "Fresh citrus opening over smoky sandalwood. The blue bottle everyone asks for.",
-    longDescription: "Armaf's most requested men's release. Grapefruit, mint and lemon give a crisp opening; ginger and nutmeg carry the middle; sandalwood, incense and amber hold the base for hours. Strong projection \u2014 one or two sprays is plenty.",
+    longDescription: "Armaf's most requested men's release. Grapefruit, mint and lemon give a crisp opening; ginger and nutmeg carry the middle; sandalwood, incense and amber hold the base for hours. Strong projection, so one or two sprays is plenty.",
     images: ["/images/armaf-club-de-nuit-iconic-1.jpg"],
     featured: true,
     variants: [
@@ -99,7 +99,7 @@ export const products: Product[] = [
       base: ["Oakmoss", "musk", "ambergris", "vanilla"]
     },
     shortDescription: "Fruity opening, smoky birch heart. Bold and unmistakably masculine.",
-    longDescription: "Now Black opens on blackcurrant, apple and pineapple, then turns woody and smoky with dry birch, rose and patchouli. Oakmoss, musk and vanilla close it out. Loud in the best way \u2014 a night-out fragrance.",
+    longDescription: "Now Black opens on blackcurrant, apple and pineapple, then turns woody and smoky with dry birch, rose and patchouli. Oakmoss, musk and vanilla close it out. Loud in the best way: a night-out fragrance.",
     images: ["/images/clive-dorris-now-black-1.jpg"],
     featured: false,
     variants: [
@@ -194,7 +194,7 @@ export const products: Product[] = [
       base: ["Vanilla", "praline", "musk"]
     },
     shortDescription: "Caramel, honey and milk. Dessert in a bottle, and it lasts.",
-    longDescription: "Eclaire is Lattafa at its sweetest \u2014 caramel, milk and sugar up front, honey and white flowers through the middle, vanilla and praline underneath. Warm and edible without being cloying.",
+    longDescription: "Eclaire is Lattafa at its sweetest: caramel, milk and sugar up front, honey and white flowers through the middle, vanilla and praline underneath. Warm and edible without being cloying.",
     images: ["/images/lattafa-eclaire-1.jpg"],
     featured: true,
     variants: [
@@ -220,7 +220,7 @@ export const products: Product[] = [
       heart: ["Whipped cream", "vanilla"],
       base: ["Praline", "biscuit", "musk"]
     },
-    shortDescription: "Banoffee pie \u2014 banana, caramel and biscuit in a gold bottle.",
+    shortDescription: "Banoffee pie: banana, caramel and biscuit in a gold bottle.",
     longDescription: "The banoffee flanker to Eclaire. Banana cream and dulce de leche over whipped vanilla, landing on praline and biscuit. Unapologetically sweet and a favourite for gifting.",
     images: ["/images/lattafa-eclaire-banoffi-1.jpg"],
     featured: false,
@@ -248,7 +248,7 @@ export const products: Product[] = [
       base: ["Vanilla", "milk", "musk"]
     },
     shortDescription: "Pistachio cream and coconut. The nutty one in the Eclaire family.",
-    longDescription: "Eclaire Pistache trades caramel for pistachio \u2014 toasted nuts and cream over coconut and cacao, with vanilla and milk beneath. Softer and less sugary than the original Eclaire.",
+    longDescription: "Eclaire Pistache trades caramel for pistachio: toasted nuts and cream over coconut and cacao, with vanilla and milk beneath. Softer and less sugary than the original Eclaire.",
     images: ["/images/lattafa-eclaire-pistache-1.jpg"],
     featured: false,
     variants: [
@@ -275,7 +275,7 @@ export const products: Product[] = [
       base: ["Praline", "sandalwood", "ambroxan"]
     },
     shortDescription: "Lychee and praline in a purple bottle. Armaf's women's Club de Nuit.",
-    longDescription: "Malyka brings the Club de Nuit name to a women's fragrance \u2014 lychee, bergamot and pink pepper opening onto orris, then praline, sandalwood and ambroxan. Fruity at first, powdery and warm as it settles.",
+    longDescription: "Malyka brings the Club de Nuit name to a women's fragrance: lychee, bergamot and pink pepper opening onto orris, then praline, sandalwood and ambroxan. Fruity at first, powdery and warm as it settles.",
     images: ["/images/armaf-club-de-nuit-malyka-1.jpg"],
     featured: true,
     variants: [
@@ -302,7 +302,7 @@ export const products: Product[] = [
       base: ["Musk", "powdery notes", "amber"]
     },
     shortDescription: "Cherry and berries in a milkshake bottle. As playful as it looks.",
-    longDescription: "Yum Yum is built to be fun \u2014 bergamot, orange and sweet cherry over rose and vanilla, finishing powdery with musk and amber. The milkshake-shaped bottle makes it an easy gift for someone younger.",
+    longDescription: "Yum Yum is built to be fun: bergamot, orange and sweet cherry over rose and vanilla, finishing powdery with musk and amber. The milkshake-shaped bottle makes it an easy gift for someone younger.",
     images: ["/images/armaf-yum-yum-1.jpg"],
     featured: true,
     variants: [
@@ -410,7 +410,7 @@ export const products: Product[] = [
       base: ["Amber", "amberwood", "patchouli", "musk"]
     },
     shortDescription: "Vanilla orchid and brown sugar over warm amber woods.",
-    longDescription: "Vanilla Candy is the warmest of the Elysia line \u2014 vanilla orchid and jasmine over brown sugar and tonka, grounded in amber, patchouli and musk. Good for cooler evenings.",
+    longDescription: "Vanilla Candy is the warmest of the Elysia line: vanilla orchid and jasmine over brown sugar and tonka, grounded in amber, patchouli and musk. Good for cooler evenings.",
     images: ["/images/elysia-vanilla-candy-rock-sugar-1.jpg"],
     featured: false,
     variants: [
@@ -491,7 +491,7 @@ export const products: Product[] = [
       base: ["Vanilla", "musk", "amber"]
     },
     shortDescription: "Buttery caramel and honey over deep vanilla. Rich and unisex.",
-    longDescription: "Vanilla Voyage is a heavier gourmand \u2014 caramel and liquorice with a buttery opening, honey and tonka through the heart, and a long vanilla-amber base. Wears warm on anyone.",
+    longDescription: "Vanilla Voyage is a heavier gourmand: caramel and liquorice with a buttery opening, honey and tonka through the heart, and a long vanilla-amber base. Wears warm on anyone.",
     images: ["/images/prefer-love-vanilla-voyage-1.jpg"],
     featured: false,
     variants: [
@@ -518,7 +518,7 @@ export const products: Product[] = [
       base: ["Vanilla", "cocoa", "rum", "cypriol"]
     },
     shortDescription: "Spiced rose and cocoa with a rum finish. Warm and unusual.",
-    longDescription: "Love Bright opens with ginger, mandarin and cinnamon over rose water, deepens through heliotrope and jasmine, and finishes on vanilla, cocoa and rum. Distinctive \u2014 not another sweet vanilla.",
+    longDescription: "Love Bright opens with ginger, mandarin and cinnamon over rose water, deepens through heliotrope and jasmine, and finishes on vanilla, cocoa and rum. Distinctive, and not another sweet vanilla.",
     images: ["/images/amouance-love-bright-1.jpg"],
     featured: false,
     variants: [
@@ -787,7 +787,7 @@ export const products: Product[] = [
       heart: [],
       base: []
     },
-    shortDescription: "Afnan 9PM Rebel, eau de parfum, 100ml. We have not written up the notes for this one yet \u2014 message us on WhatsApp and we will tell you how it wears.",
+    shortDescription: "Afnan 9PM Rebel, eau de parfum, 100ml. We have not written up the notes for this one yet. Message us on WhatsApp and we will tell you how it wears.",
     longDescription: "",
     images: ["/images/afnan-9pm-rebel-1.jpg"],
     featured: false,
@@ -814,7 +814,7 @@ export const products: Product[] = [
       heart: [],
       base: []
     },
-    shortDescription: "Afnan 9PM Night Out, extrait de parfum, 100ml. Extrait is a heavier concentration than eau de parfum, so it lasts longer on the skin and you need less of it. We have not written up the notes for this one yet \u2014 message us on WhatsApp and we will tell you how it wears.",
+    shortDescription: "Afnan 9PM Night Out, extrait de parfum, 100ml. Extrait is a heavier concentration than eau de parfum, so it lasts longer on the skin and you need less of it. We have not written up the notes for this one yet. Message us on WhatsApp and we will tell you how it wears.",
     longDescription: "",
     images: ["/images/afnan-9pm-nightout-1.jpg"],
     featured: false,
@@ -841,7 +841,7 @@ export const products: Product[] = [
       heart: [],
       base: []
     },
-    shortDescription: "Armaf Club de Nuit Intense Man, eau de toilette, 105ml. We have not written up the notes for this one yet \u2014 message us on WhatsApp and we will tell you how it wears.",
+    shortDescription: "Armaf Club de Nuit Intense Man, eau de toilette, 105ml. We have not written up the notes for this one yet. Message us on WhatsApp and we will tell you how it wears.",
     longDescription: "",
     images: ["/images/armaf-club-de-nuit-intense-man-1.jpg"],
     featured: false,
@@ -868,7 +868,7 @@ export const products: Product[] = [
       heart: [],
       base: []
     },
-    shortDescription: "Lattafa Yara Candy, eau de parfum, 100ml \u2014 the Candy bottle in the Yara line. We have not written up the notes for this one yet \u2014 message us on WhatsApp and we will tell you how it wears.",
+    shortDescription: "Lattafa Yara Candy, eau de parfum, 100ml, the Candy bottle in the Yara line. We have not written up the notes for this one yet. Message us on WhatsApp and we will tell you how it wears.",
     longDescription: "",
     images: ["/images/lattafa-yara-candy-1.jpg"],
     featured: false,

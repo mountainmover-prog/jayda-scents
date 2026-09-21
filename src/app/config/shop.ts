@@ -33,5 +33,15 @@ export const LIPA_NAME = 'SALHA SULEIMAN SAIDI';
 export const INSTAGRAM_URL = 'https://www.instagram.com/unapologetic_baybe';
 export const TIKTOK_URL = 'https://www.tiktok.com/@jaydascents';
 
+/**
+ * The site's public address, no trailing slash. CHANGE THIS WHEN YOU MOVE HOSTS.
+ *
+ * It is the single source for the canonical tag on every page, the absolute
+ * address of the link-preview image, and every URL in sitemap.xml. They all
+ * have to name the same host: a canonical pointing at bolt.host after the move
+ * would tell Google the real shop is on the old address.
+ */
+export const SITE_URL = 'https://mountainmover-prog-j-0gtp.bolt.host';
+
 export const isCheckoutConfigured = (): boolean =>
   LIPA_NAMBA.trim().length > 0 && WHATSAPP_NUMBER.trim().length > 0;
