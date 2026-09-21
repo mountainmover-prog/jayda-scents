@@ -94,6 +94,8 @@ function ProductDetail({ slug }: { slug?: string }) {
             <ImageWithFallback
               src={product.images[0]}
               alt={product.name}
+              sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, 100vw"
+              priority
               className="object-contain w-full h-full p-10"
             />
           </div>

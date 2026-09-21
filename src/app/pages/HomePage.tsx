@@ -1,3 +1,4 @@
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Link } from 'react-router';
 import { Hero } from '../components/Hero';
 import { ProductCard } from '../components/ProductCard';
@@ -7,9 +8,9 @@ import { useLang } from '../i18n/LanguageContext';
 import { StringKey } from '../i18n/strings';
 
 const categories: { to: string; key: StringKey; image: string }[] = [
-  { to: '/women', key: 'navWomen', image: 'url(/images/category-women.jpg)' },
-  { to: '/men', key: 'navMen', image: 'url(/images/category-men.jpg)' },
-  { to: '/unisex', key: 'navUnisex', image: 'url(/images/category-unisex.jpg)' },
+  { to: '/women', key: 'navWomen', image: '/images/category-women.jpg' },
+  { to: '/men', key: 'navMen', image: '/images/category-men.jpg' },
+  { to: '/unisex', key: 'navUnisex', image: '/images/category-unisex.jpg' },
 ];
 
 export function HomePage() {
@@ -30,9 +31,12 @@ export function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {categories.map((cat) => (
               <Link key={cat.to} to={cat.to} className="relative h-72 rounded-lg overflow-hidden group">
-                <div
-                  className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                  style={{ backgroundImage: cat.image }}
+                {/* an <img> rather than a CSS background, so it can be served small and lazily */}
+                <ImageWithFallback
+                  src={cat.image}
+                  alt=""
+                  sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div
                   className="absolute inset-0 transition-all duration-300 group-hover:bg-ink/60"

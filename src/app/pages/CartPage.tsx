@@ -51,6 +51,7 @@ export function CartPage() {
                     <ImageWithFallback
                       src={product.images[0]}
                       alt={product.name}
+                      sizes="96px"
                       className="object-contain w-full h-full p-2"
                     />
                   </div>

@@ -26,6 +26,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <ImageWithFallback
           src={product.images[0]}
           alt={product.name}
+          sizes="(min-width: 1280px) 400px, (min-width: 1024px) 33vw, 50vw"
           className="object-contain w-full h-full p-6 group-hover:scale-105 transition-transform duration-500"
         />
         {soldOut && (

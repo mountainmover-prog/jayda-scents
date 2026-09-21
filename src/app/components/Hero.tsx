@@ -1,6 +1,11 @@
 import { Link } from 'react-router';
 import { useLang } from '../i18n/LanguageContext';
 import { products } from '../data/products';
+import {
+  HERO_SRC, HERO_MOBILE_MEDIA, HERO_MOBILE_SIZES, HERO_WIDE_MEDIA, HERO_WIDE_SIZES, heroSources,
+} from '../utils/images';
+
+const hero = heroSources();
 
 /**
  * The backdrop is built from the shop's own bottles, not stock photography, so
@@ -18,10 +23,35 @@ export function Hero() {
 
   return (
     <div className="relative h-[70vh] min-h-[500px] bg-ink overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url(/images/hero-jayda.jpg)' }}
-      />
+      {/*
+        The hero photo is the largest thing on the first screen, so it decides
+        PageSpeed's "Largest Contentful Paint". As a CSS background the browser
+        only found it after the site's JavaScript had run and drawn this
+        component (the "LCP request discovery" warning), and every phone
+        downloaded the full 2400px banner. Now it is a real image: index.html
+        preloads it before any JavaScript runs, phones get the middle square
+        they actually see (about 5 KB), and wider screens get a banner sized to
+        the window. object-cover crops it exactly as bg-cover did.
+      */}
+      {hero ? (
+        <picture className="contents">
+          {hero.mobile && (
+            <source media={HERO_MOBILE_MEDIA} type="image/webp" srcSet={hero.mobile} sizes={HERO_MOBILE_SIZES} />
+          )}
+          <source media={HERO_WIDE_MEDIA} type="image/webp" srcSet={hero.wide} sizes={HERO_WIDE_SIZES} />
+          <img
+            src={HERO_SRC}
+            alt=""
+            width={hero.info.w}
+            height={hero.info.h}
+            decoding="async"
+            {...{ fetchpriority: 'high' }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </picture>
+      ) : (
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${HERO_SRC})` }} />
+      )}
       <div
         className="absolute inset-0"
         style={{ background: 'linear-gradient(rgba(11,9,7,0.34), rgba(11,9,7,0.20))' }}
