@@ -28,8 +28,8 @@ export default {
         rule: 'rgb(var(--rule-rgb) / <alpha-value>)',
       },
       fontFamily: {
-        display: ['Italiana', 'serif'],
-        body: ['Jost', 'sans-serif'],
+        display: ['Italiana', 'Times New Roman', 'serif'],
+        body: ['Jost', 'Segoe UI', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         sm: 'calc(var(--radius) - 4px)',

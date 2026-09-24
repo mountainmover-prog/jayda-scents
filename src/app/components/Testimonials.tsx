@@ -34,7 +34,7 @@ export function Testimonials() {
               key={`${item.name}-${i}`}
               className="bg-bone border border-rule/60 rounded-lg p-7 flex flex-col"
             >
-              <span aria-hidden="true" className="font-display text-4xl text-gold leading-none mb-3">
+              <span aria-hidden="true" className="font-display text-4xl text-bronze leading-none mb-3">
                 &ldquo;
               </span>
               <blockquote className="text-charcoal/80 font-light leading-relaxed flex-1">

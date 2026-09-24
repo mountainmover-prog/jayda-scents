@@ -237,7 +237,7 @@ export function CheckoutPage() {
                   <span className="font-display text-base text-charcoal tracking-wide uppercase">
                     {t('total')}
                   </span>
-                  <span className="font-display text-lg text-gold">{formatPrice(total)}</span>
+                  <span className="font-display text-lg text-bronze">{formatPrice(total)}</span>
                 </div>
                 <p className="text-xs text-muted mt-2 font-light">{t('deliveryPolicyShort')}</p>
               </div>
@@ -256,7 +256,7 @@ export function CheckoutPage() {
                     </div>
                     <button
                       onClick={copyNamba}
-                      className="text-xs text-muted hover:text-gold transition-colors flex items-center gap-1"
+                      className="text-xs text-muted hover:text-bronze transition-colors flex items-center gap-1"
                       aria-label={t('copy')}
                     >
                       {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}

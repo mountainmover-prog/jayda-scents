@@ -57,7 +57,9 @@ function Radio({
 function FilterGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="text-[10px] tracking-[0.16em] text-gold mb-4 uppercase">{title}</h3>
+      {/* h2, not h3: the page heading is the h1 and the product names are h3s, so an h3
+          here skipped a level and a screen reader lost the outline. Styling unchanged. */}
+      <h2 className="text-[10px] tracking-[0.16em] text-bronze mb-4 uppercase">{title}</h2>
       <div className="space-y-2">{children}</div>
     </div>
   );
@@ -194,7 +196,7 @@ export function CollectionPage({
                   setGender('all');
                   setBand('all');
                 }}
-                className="text-xs text-muted hover:text-gold transition-colors tracking-[0.16em] uppercase"
+                className="text-xs text-muted hover:text-bronze transition-colors tracking-[0.16em] uppercase"
               >
                 {t('clearFilters')}
               </button>

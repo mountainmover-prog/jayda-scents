@@ -45,13 +45,16 @@ export function ProductCard({ product }: ProductCardProps) {
             {formatType(product.type, lang)}
           </p>
         </div>
-        <h3 className="font-display text-lg text-charcoal mt-1">{product.name}</h3>
+        {/* h2, not h3: on a phone the filter headings are behind the Filters button and
+            are not in the page, so an h3 here jumped straight from the h1 and left a
+            screen reader with a broken outline. Styling unchanged. */}
+        <h2 className="font-display text-lg text-charcoal mt-1">{product.name}</h2>
         {rating && (
           <div className="mt-1">
             <Stars summary={rating} size="sm" />
           </div>
         )}
-        <p className="text-sm text-gold mt-1 tracking-wide">
+        <p className="text-sm text-bronze mt-1 tracking-wide">
           {multipleSizes && <span className="text-muted">{t('from')} </span>}
           {formatPrice(from)}
         </p>

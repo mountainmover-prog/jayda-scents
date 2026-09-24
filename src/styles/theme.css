@@ -1,3 +1,48 @@
+/*
+ * The two brand fonts, served from this site rather than fetched from Google.
+ *
+ * The <link> to fonts.googleapis.com was the site's biggest remaining delay on
+ * a phone: PageSpeed measured 1,300 ms of "render-blocking requests", because
+ * the browser had to open a connection to a second company's server, download
+ * a stylesheet, and only then discover which font files to fetch. Same-origin
+ * files remove both the extra connection and that second step, and index.html
+ * preloads the two faces used above the fold.
+ *
+ * font-display: swap means text appears immediately in a fallback face and
+ * swaps when the real one arrives, rather than staying invisible.
+ *
+ * The files are the same ones Google serves (latin subset, woff2), about 10 KB
+ * each. To add a weight, copy its woff2 into public/fonts and add a block here.
+ */
+@font-face {
+  font-family: 'Italiana';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/italiana-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/jost-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/jost-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/jost-500.woff2') format('woff2');
+}
+
 :root {
   --font-size: 16px;
   --text-base: 1rem;
@@ -70,8 +115,8 @@
   --rule-rgb: 227 220 209;
 
   /* Typography */
-  --font-display: 'Italiana', serif;
-  --font-body: 'Jost', sans-serif;
+  --font-display: 'Italiana', 'Times New Roman', serif;
+  --font-body: 'Jost', 'Segoe UI', system-ui, sans-serif;
 }
 
 .dark {

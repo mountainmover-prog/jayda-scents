@@ -40,7 +40,7 @@ function ProductDetail({ slug }: { slug?: string }) {
           <h2 className="font-display text-2xl text-charcoal mb-4">{t('notFound')}</h2>
           <button
             onClick={() => navigate('/shop')}
-            className="text-sm text-gold hover:text-bronze transition-colors"
+            className="text-sm text-bronze hover:text-charcoal transition-colors"
           >
             ← {t('backToShop')}
           </button>
@@ -73,7 +73,7 @@ function ProductDetail({ slug }: { slug?: string }) {
   const Note = ({ label, items }: { label: string; items: string[] }) =>
     items.length === 0 ? null : (
       <div>
-        <p className="text-[10px] tracking-[0.16em] text-gold mb-2 uppercase">{label}</p>
+        <p className="text-[10px] tracking-[0.16em] text-bronze mb-2 uppercase">{label}</p>
         <p className="text-sm text-charcoal/70 font-light">{items.join(', ')}</p>
       </div>
     );
@@ -131,7 +131,7 @@ function ProductDetail({ slug }: { slug?: string }) {
                   </p>
                 )}
               </div>
-              <p className="text-xl text-gold mb-4 tracking-wide">
+              <p className="text-xl text-bronze mb-4 tracking-wide">
                 {formatPrice(variant.priceTzs)}
                 {variant.wasPriceTzs && (
                   <span className="ml-3 text-sm text-muted line-through">

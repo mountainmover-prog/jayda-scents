@@ -38,7 +38,7 @@ export function Stars({
               <Star className={`absolute inset-0 ${px} text-rule`} strokeWidth={1.5} />
               {fill > 0 && (
                 <span className="absolute inset-0 overflow-hidden" style={{ width: `${fill * 100}%` }}>
-                  <Star className={`${px} text-gold fill-gold`} strokeWidth={1.5} />
+                  <Star className={`${px} text-bronze fill-bronze`} strokeWidth={1.5} />
                 </span>
               )}
             </span>

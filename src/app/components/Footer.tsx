@@ -90,7 +90,7 @@ export function Footer() {
           <p className="text-xs text-cream/50 font-light leading-relaxed max-w-3xl mb-6">
             {t('deliveryPolicy')}
           </p>
-          <p className="text-center text-sm text-cream/40 font-light">
+          <p className="text-center text-sm text-cream/60 font-light">
             © 2026 Jayda Scents. {t('rightsReserved')}
           </p>
         </div>

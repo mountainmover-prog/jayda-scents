@@ -56,7 +56,7 @@ export function FaqPage() {
                       <span className="font-light leading-snug">{item.q[lang]}</span>
                       <span
                         aria-hidden="true"
-                        className="mt-1 flex-none text-gold transition-transform duration-200 group-open:rotate-45"
+                        className="mt-1 flex-none text-bronze transition-transform duration-200 group-open:rotate-45"
                       >
                         +
                       </span>

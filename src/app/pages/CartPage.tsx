@@ -105,7 +105,7 @@ export function CartPage() {
                         )}
                       </div>
 
-                      <p className="text-sm text-gold tracking-wide">
+                      <p className="text-sm text-bronze tracking-wide">
                         {formatPrice(variant.priceTzs * item.quantity)}
                       </p>
                     </div>
@@ -140,7 +140,7 @@ export function CartPage() {
               <div className="border-t border-rule pt-4 mb-6">
                 <div className="flex justify-between mb-2">
                   <span className="font-display text-base text-charcoal tracking-wide uppercase">{t('total')}</span>
-                  <span className="font-display text-lg text-gold">{formatPrice(subtotal)}</span>
+                  <span className="font-display text-lg text-bronze">{formatPrice(subtotal)}</span>
                 </div>
                 <p className="text-xs text-muted leading-relaxed">{t('deliveryPolicy')}</p>
               </div>
@@ -154,7 +154,7 @@ export function CartPage() {
 
               <button
                 onClick={() => navigate('/shop')}
-                className="w-full py-4 text-xs tracking-[0.16em] text-charcoal hover:text-gold transition-colors uppercase"
+                className="w-full py-4 text-xs tracking-[0.16em] text-charcoal hover:text-bronze transition-colors uppercase"
               >
                 {t('continueShopping')}
               </button>

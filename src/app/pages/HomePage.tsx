@@ -67,7 +67,7 @@ export function HomePage() {
             </div>
             <Link
               to="/shop"
-              className="text-[10px] tracking-[0.16em] text-charcoal hover:text-gold transition-colors uppercase"
+              className="text-[10px] tracking-[0.16em] text-charcoal hover:text-bronze transition-colors uppercase"
             >
               {t('viewAll')} →
             </Link>

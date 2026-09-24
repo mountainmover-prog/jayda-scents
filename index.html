@@ -36,12 +36,14 @@
       <!--%HERO_PRELOAD%-->
       <link rel="icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&display=swap"
-        rel="stylesheet"
-      />
+      <!--
+        Fonts are served from this site (see the @font-face blocks at the top of
+        src/styles/theme.css), so there is no connection to fonts.googleapis.com
+        to wait on. These two faces are the ones the first screen needs: the
+        headline and the body text.
+      -->
+      <link rel="preload" as="font" type="font/woff2" href="/fonts/italiana-400.woff2" crossorigin />
+      <link rel="preload" as="font" type="font/woff2" href="/fonts/jost-300.woff2" crossorigin />
       <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
       
     </head>
