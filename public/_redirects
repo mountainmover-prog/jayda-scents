@@ -1,0 +1,16 @@
+# Cloudflare Pages reads this file. Vite copies it from public/ into dist/.
+#
+# Every address on this shop is drawn by the same JavaScript app; there is no
+# real file at /shop or /product/lattafa-yara. Clicking a link works because
+# the app is already running and swaps the page itself. But a visitor who
+# refreshes, opens a link shared on WhatsApp, or is Google's crawler asks the
+# server for that address directly, and without this line the server has
+# nothing to hand back and answers 404.
+#
+# 200, not 301: the address in the bar stays /shop while index.html is served,
+# so the app can read it and draw the right page. A 301 would rewrite the
+# address to / and every shared link would land on the home page.
+#
+# This must stay last. Rules are matched top to bottom and this one matches
+# everything, so anything added below it would never be reached.
+/*    /index.html   200

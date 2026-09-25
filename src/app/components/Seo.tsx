@@ -8,8 +8,9 @@ import { useLang } from '../i18n/LanguageContext';
  * Per-page title, description and canonical tag, set after each navigation.
  *
  * The canonical is always the address of the page itself, on SITE_URL, with
- * the ?query and #hash stripped. So /faq#delivery, /shop?utm_source=whatsapp
- * and the same page reached through bolt.host all point Google at one URL.
+ * the ?query and #hash stripped. So /faq#delivery, /shop?utm_source=whatsapp,
+ * the www spelling and the same page still reachable on an old host all point
+ * Google at one URL.
  * Google's guidance allows a canonical set by JavaScript as long as the raw
  * HTML carries no different one, which is why index.html has none.
  *

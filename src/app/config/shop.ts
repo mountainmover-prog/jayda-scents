@@ -38,10 +38,14 @@ export const TIKTOK_URL = 'https://www.tiktok.com/@jaydascents';
  *
  * It is the single source for the canonical tag on every page, the absolute
  * address of the link-preview image, and every URL in sitemap.xml. They all
- * have to name the same host: a canonical pointing at bolt.host after the move
- * would tell Google the real shop is on the old address.
+ * have to name the same host: a canonical still pointing at the old address
+ * after a move would tell Google the real shop lives somewhere else.
+ *
+ * No 'www'. Both spellings reach the site, but only one may be the canonical
+ * one or Google treats them as two shops competing with each other, so
+ * www.jaydascents.com redirects here rather than serving its own copy.
  */
-export const SITE_URL = 'https://mountainmover-prog-j-dv1c.bolt.host';
+export const SITE_URL = 'https://jaydascents.com';
 
 export const isCheckoutConfigured = (): boolean =>
   LIPA_NAMBA.trim().length > 0 && WHATSAPP_NUMBER.trim().length > 0;
