@@ -35,6 +35,14 @@ export interface Testimonial {
 }
 
 export const testimonials: Testimonial[] = [
+  // Five WhatsApp messages received 28 Sep 2026. All seven customers on this
+  // list gave permission to be quoted on the website.
+  {
+    quote:
+      'There’s just something special about a beautiful fragrance, and Jayda Scents truly understands that. ✨❤️ I’ve been getting my perfumes from Jayda Scents, and every scent I’ve tried has been absolutely beautiful — elegant, feminine, long-lasting, and effortlessly luxurious. The kind of fragrance that makes you feel confident and leaves people asking, “What perfume are you wearing?” 😍 If you love smelling amazing and feeling luxurious, Jayda Scents is definitely worth trying. Highly recommended! 🤍✨ 10/10 - my go to perfume plug 🥰',
+    name: 'Rachel',
+    source: 'whatsapp',
+  },
   {
     quote: 'Asante bby imefika. Inanukia atr 🙌',
     name: 'Edyna',
@@ -53,4 +61,30 @@ export const testimonials: Testimonial[] = [
   // 'Girl 😭🔥 hii perfume ni hatari! Harufu yake ni classy, sweet na inastay
   //  for hours 😍❤️ Nimepata compliments already 😂 definitely nitarudi tena
   //  for another one'
+  {
+    quote:
+      'I bought suger candy with Elysia Marshmallow boujee. I honestly recommend to buy from Jaydascents. The perfumes smell nice and they last. I will be coming for more honestly.',
+    name: 'Sabaha',
+    product: 'Suger Lollipop · Yum Boujee Marshmallow',
+    source: 'whatsapp',
+  },
+  {
+    quote:
+      'Elysia lychee fizz. Honestly, this perfume smells amazing 😍❤️ The scent is so nice, fresh and long-lasting. I really love how it stays on me for hours without being too strong. Definitely worth trying 🥰✨ Highly recommend 💯',
+    name: 'Lily Spa',
+    product: 'Eden Sparkling Lychee',
+    source: 'whatsapp',
+  },
+  {
+    quote:
+      'Absolutely love the perfumes from Jayda Scents! 😍 The scents are beautiful, elegant, and long-lasting. They smell amazing and stay on for hours without fading. Definitely worth the money! ❤️✨',
+    name: 'Muna',
+    source: 'whatsapp',
+  },
+  {
+    quote:
+      'Jayda Scents is honestly one of the best perfume brands I’ve come across! ❤️✨ The fragrances are absolutely amazing, elegant, and long-lasting. Every scent has a unique and luxurious feel, and you can tell that quality is a top notch. 👌🏽',
+    name: 'Rahma',
+    source: 'whatsapp',
+  },
 ];

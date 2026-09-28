@@ -6,10 +6,8 @@
  * worked out from these rows. Nothing is typed in anywhere else.
  *
  * Only add a row when a customer has actually given a rating. A kind message
- * is not a star rating: Edyna and Fathiyyah wrote lovely things (they are on
- * the home page as testimonials), but neither gave a number, so neither is
- * here. Ask them for one when you ask permission to quote them, and add it
- * then. Made-up ratings are the fastest way to lose a customer who spots them,
+ * is not a star rating: only add a row once the customer has given a number
+ * for a specific product. Made-up ratings are the fastest way to lose a customer who spots them,
  * and in many places they are illegal.
  *
  * Every product page has a "Tell us how it wears" link that opens WhatsApp
@@ -36,7 +34,54 @@ export interface Review {
   source?: 'whatsapp' | 'instagram' | 'tiktok' | 'in-person';
 }
 
-export const reviews: Review[] = [];
+export const reviews: Review[] = [
+  // All seven customers gave 5 stars for what they bought (told to us 28 Sep 2026).
+  // Rachel, Muna and Rahma are not here yet: their messages don't name a perfume,
+  // and a star rating has to belong to a product.
+  {
+    slug: 'paris-corner-marshmallow-blush',
+    rating: 5,
+    name: 'Edyna',
+    quote:
+      'Asante bby imefika. Inanukia atr 🙌',
+    source: 'whatsapp',
+  },
+  {
+    slug: 'armaf-club-de-nuit-malyka',
+    rating: 5,
+    name: 'Fathiyyah',
+    quote:
+      'Nimeipokea 😍🔥 Wueeh hii perfume imenikamata! Harufu yake ni addictive na inakaa muda mrefu sana 😭❤️ Kila mtu anauliza nimepaka nini 😂 Definitely coming back for more 🤗',
+    source: 'whatsapp',
+  },
+  {
+    slug: 'elysia-eden-sparkling-lychee',
+    rating: 5,
+    name: 'Lily Spa',
+    quote:
+      'Elysia lychee fizz. Honestly, this perfume smells amazing 😍❤️ The scent is so nice, fresh and long-lasting. I really love how it stays on me for hours without being too strong. Definitely worth trying 🥰✨ Highly recommend 💯',
+    date: '2026-09-28',
+    source: 'whatsapp',
+  },
+  {
+    slug: 'aro-fac-suger-lollipop',
+    rating: 5,
+    name: 'Sabaha',
+    quote:
+      'I bought suger candy with Elysia Marshmallow boujee. I honestly recommend to buy from Jaydascents. The perfumes smell nice and they last. I will be coming for more honestly.',
+    date: '2026-09-28',
+    source: 'whatsapp',
+  },
+  {
+    slug: 'elysia-yum-boujee-marshmallow',
+    rating: 5,
+    name: 'Sabaha',
+    quote:
+      'I bought suger candy with Elysia Marshmallow boujee. I honestly recommend to buy from Jaydascents. The perfumes smell nice and they last. I will be coming for more honestly.',
+    date: '2026-09-28',
+    source: 'whatsapp',
+  },
+];
 
 export interface RatingSummary {
   /** Mean of the ratings, to one decimal place. */
