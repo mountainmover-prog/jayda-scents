@@ -6,19 +6,21 @@ import { useLang } from '../i18n/LanguageContext';
  * "what customers say" heading is worse than no section.
  *
  * The column count follows the number of quotes so a single one is never left
- * stranded in a three-wide row with two gaps beside it.
+ * stranded in a three-wide row with two gaps beside it. From three quotes up the
+ * cards flow into newspaper-style columns: the quotes vary from one line to a
+ * paragraph, and a fixed grid would leave tall gaps beside the short ones.
  */
 export function Testimonials() {
   const { t } = useLang();
-  const items = testimonials.slice(0, 6);
+  const items = testimonials.slice(0, 9);
   if (items.length === 0) return null;
 
   const columns =
     items.length === 1
-      ? 'grid-cols-1 max-w-xl mx-auto'
+      ? 'columns-1 max-w-xl mx-auto'
       : items.length === 2
-      ? 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto'
-      : 'grid-cols-1 md:grid-cols-3';
+      ? 'columns-1 md:columns-2 max-w-4xl mx-auto'
+      : 'columns-1 md:columns-2 lg:columns-3';
 
   return (
     <section className="py-20 bg-cream/40">
@@ -28,11 +30,11 @@ export function Testimonials() {
         </h2>
         <div className="w-12 h-px bg-gold mx-auto mb-12" />
 
-        <div className={`grid gap-6 lg:gap-8 ${columns}`}>
+        <div className={`gap-6 lg:gap-8 ${columns}`}>
           {items.map((item, i) => (
             <figure
               key={`${item.name}-${i}`}
-              className="bg-bone border border-rule/60 rounded-lg p-7 flex flex-col"
+              className="break-inside-avoid mb-6 lg:mb-8 bg-bone border border-rule/60 rounded-lg p-7 flex flex-col"
             >
               <span aria-hidden="true" className="font-display text-4xl text-bronze leading-none mb-3">
                 &ldquo;
