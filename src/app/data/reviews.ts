@@ -126,6 +126,32 @@ export const reviews: Review[] = [
     date: '2026-09-28',
     source: 'whatsapp',
   },
+  // Mika, 28 Sep 2026: 5 stars on everything he bought. Hawas Fire, Hawas Malibu and
+  // El Bapura oil are not in the catalogue yet, so their praise is on the home page only.
+  {
+    slug: 'armaf-club-de-nuit-iconic',
+    rating: 5,
+    name: 'Mika',
+    quote: 'I bought Club De Nuit Iconic from Jayda Scents. It smells great and lasts long.',
+    date: '2026-09-28',
+    source: 'whatsapp',
+  },
+  {
+    slug: 'afnan-supremacy-collectors-edition',
+    rating: 5,
+    name: 'Mika',
+    quote: 'I also bought Supremacy Collector. Very elegant fragrance.',
+    date: '2026-09-28',
+    source: 'whatsapp',
+  },
+  {
+    slug: 'clive-dorris-now-black',
+    rating: 5,
+    name: 'Mika',
+    quote: 'Thank you for the Now Black perfume. Combined Now Black with Hawas Fire. Best combo ever! 🔥',
+    date: '2026-09-28',
+    source: 'whatsapp',
+  },
 ];
 
 export interface RatingSummary {

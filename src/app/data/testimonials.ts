@@ -90,4 +90,11 @@ export const testimonials: Testimonial[] = [
     product: 'Club de Nuit Iconic',
     source: 'whatsapp',
   },
+  {
+    quote:
+      'I bought Club De Nuit Iconic from Jayda Scents. It smells great and lasts long. I also bought Supremacy Collector. Very elegant fragrance. I got the Hawas Fire and Hawas Malibu. 🔥🔥 Highly recommend Jayda scents. Thank you for the Now Black perfume. Combined Now Black with Hawas Fire. Best combo ever! 🔥 Got the El Bapura oil form. Best oil product to get from Jayda scents. Highly recommend.',
+    name: 'Mika',
+    product: 'Club de Nuit Iconic · Supremacy · Now Black',
+    source: 'whatsapp',
+  },
 ];
