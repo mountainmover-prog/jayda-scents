@@ -18,8 +18,14 @@
  * To add one:
  *   { quote: 'exactly what they wrote', name: 'Amina', area: 'Masaki', source: 'whatsapp' }
  *
- * `area`, `product` and `source` are optional. `source` is never shown on the
- * site — it is there so you can find the original message again later.
+ * `area`, `product`, `slugs` and `source` are optional. `source` is never shown
+ * on the site — it is there so you can find the original message again later.
+ *
+ * `slugs` is what turns the line under their name into links to the perfumes
+ * they are talking about, and is how the card finds the stars that customer
+ * gave in reviews.ts. Use the product's slug, the end of its web address. The
+ * names shown come from the catalogue, so a link can never name one perfume and
+ * open another.
  */
 export interface Testimonial {
   /** Their words, as they wrote them. */
@@ -28,8 +34,11 @@ export interface Testimonial {
   name: string;
   /** Neighbourhood or town — Masaki, Mikocheni, Zanzibar. Optional. */
   area?: string;
-  /** Which fragrance they bought, if they said. Optional. */
+  /** Which fragrance they bought, if they said. Optional, and only used as a
+   *  fallback for an entry that has no `slugs`. */
   product?: string;
+  /** Catalogue slugs of the perfumes they mention, in the order to show them. */
+  slugs?: string[];
   /** Where it came from, for your records only. Not displayed. */
   source?: 'whatsapp' | 'instagram' | 'tiktok' | 'in-person';
 }
@@ -41,12 +50,14 @@ export const testimonials: Testimonial[] = [
     quote:
       'There’s just something special about a beautiful fragrance, and Jayda Scents truly understands that. ✨❤️ I’ve been getting my perfumes from Jayda Scents, and every scent I’ve tried has been absolutely beautiful — elegant, feminine, long-lasting, and effortlessly luxurious. The kind of fragrance that makes you feel confident and leaves people asking, “What perfume are you wearing?” 😍 If you love smelling amazing and feeling luxurious, Jayda Scents is definitely worth trying. Highly recommended! 🤍✨ 10/10 - my go to perfume plug 🥰',
     name: 'Rachel',
+    slugs: ['prefer-love-vanilla-voyage', 'armaf-yum-yum'],
     product: 'Vanilla Voyage · Yum Yum',
     source: 'whatsapp',
   },
   {
     quote: 'Asante bby imefika. Inanukia atr 🙌',
     name: 'Edyna',
+    slugs: ['paris-corner-marshmallow-blush'],
     product: 'Marshmallow Blush',
     source: 'whatsapp',
   },
@@ -54,6 +65,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Nimeipokea 😍🔥 Wueeh hii perfume imenikamata! Harufu yake ni addictive na inakaa muda mrefu sana 😭❤️ Kila mtu anauliza nimepaka nini 😂 Definitely coming back for more 🤗',
     name: 'Fathiyyah',
+    slugs: ['armaf-club-de-nuit-malyka'],
     product: 'Club de Nuit Malyka',
     source: 'whatsapp',
   },
@@ -66,6 +78,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'I bought suger candy with Elysia Marshmallow boujee. I honestly recommend to buy from Jaydascents. The perfumes smell nice and they last. I will be coming for more honestly.',
     name: 'Sabaha',
+    slugs: ['aro-fac-suger-lollipop', 'elysia-yum-boujee-marshmallow'],
     product: 'Suger Lollipop · Yum Boujee Marshmallow',
     source: 'whatsapp',
   },
@@ -73,6 +86,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Elysia lychee fizz. Honestly, this perfume smells amazing 😍❤️ The scent is so nice, fresh and long-lasting. I really love how it stays on me for hours without being too strong. Definitely worth trying 🥰✨ Highly recommend 💯',
     name: 'Lily Spa',
+    slugs: ['elysia-eden-sparkling-lychee'],
     product: 'Eden Sparkling Lychee',
     source: 'whatsapp',
   },
@@ -80,6 +94,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Absolutely love the perfumes from Jayda Scents! 😍 The scents are beautiful, elegant, and long-lasting. They smell amazing and stay on for hours without fading. Definitely worth the money! ❤️✨',
     name: 'Muna',
+    slugs: ['aro-fac-suger-lollipop', 'elysia-vanilla-candy-rock-sugar'],
     product: 'Suger Lollipop · Vanilla Candy Rock Sugar',
     source: 'whatsapp',
   },
@@ -87,6 +102,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Jayda Scents is honestly one of the best perfume brands I’ve come across! ❤️✨ The fragrances are absolutely amazing, elegant, and long-lasting. Every scent has a unique and luxurious feel, and you can tell that quality is a top notch. 👌🏽',
     name: 'Rahma',
+    slugs: ['armaf-club-de-nuit-iconic'],
     product: 'Club de Nuit Iconic',
     source: 'whatsapp',
   },
@@ -94,6 +110,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'I bought Club De Nuit Iconic from Jayda Scents. It smells great and lasts long. I also bought Supremacy Collector. Very elegant fragrance. I got the Hawas Fire and Hawas Malibu. 🔥🔥 Highly recommend Jayda scents. Thank you for the Now Black perfume. Combined Now Black with Hawas Fire. Best combo ever! 🔥 Got the El Bapura oil form. Best oil product to get from Jayda scents. Highly recommend.',
     name: 'Mika',
+    slugs: ['armaf-club-de-nuit-iconic', 'afnan-supremacy-collectors-edition', 'clive-dorris-now-black'],
     product: 'Club de Nuit Iconic · Supremacy · Now Black',
     source: 'whatsapp',
   },

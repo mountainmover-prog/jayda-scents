@@ -160,6 +160,20 @@ export interface RatingSummary {
   count: number;
 }
 
+/**
+ * The stars one named customer gave, across every product they rated.
+ *
+ * Used by the quotes on the home page, where the stars belong to the person
+ * who wrote the words rather than to a product. Null when that customer gave
+ * no rating, so their card shows the quote alone rather than an empty row.
+ */
+export function ratingByCustomer(name: string): RatingSummary | null {
+  const rs = reviews.filter((r) => r.name === name);
+  if (rs.length === 0) return null;
+  const average = rs.reduce((n, r) => n + r.rating, 0) / rs.length;
+  return { average: Math.round(average * 10) / 10, count: rs.length };
+}
+
 export function reviewsFor(slug: string): Review[] {
   return reviews
     .filter((r) => r.slug === slug)

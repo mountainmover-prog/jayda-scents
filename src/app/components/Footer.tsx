@@ -19,14 +19,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div>
             <h3 className="font-display text-lg text-cream mb-4 uppercase">{t('footerAbout')}</h3>
-            <p className="text-sm text-cream/60 font-light leading-relaxed">
+            <p className="text-sm text-cream/60 leading-relaxed">
               {t('footerAboutText')}
             </p>
           </div>
 
           <div>
             <h3 className="font-display text-lg text-cream mb-4 uppercase">{t('footerService')}</h3>
-            <ul className="space-y-2 text-sm text-cream/60 font-light">
+            <ul className="space-y-2 text-sm text-cream/60">
               <li>
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -53,7 +53,7 @@ export function Footer() {
 
           <div>
             <h3 className="font-display text-lg text-cream mb-4 uppercase">{t('footerShop')}</h3>
-            <ul className="space-y-2 text-sm text-cream/60 font-light">
+            <ul className="space-y-2 text-sm text-cream/60">
               <li>
                 <Link to="/shop" className="hover:text-gold transition-colors">
                   {t('footerAllFragrances')}
@@ -81,16 +81,16 @@ export function Footer() {
 
           <div>
             <h3 className="font-display text-lg text-cream mb-4 uppercase">{t('footerFollow')}</h3>
-            <p className="text-sm text-cream/60 font-light mb-4">{t('footerFollowText')}</p>
+            <p className="text-sm text-cream/60 mb-4">{t('footerFollowText')}</p>
             <SocialLinks />
           </div>
         </div>
 
         <div className="mt-10 pt-8 border-t border-cream/10">
-          <p className="text-xs text-cream/50 font-light leading-relaxed max-w-3xl mb-6">
+          <p className="text-xs text-cream/50 leading-relaxed max-w-3xl mb-6">
             {t('deliveryPolicy')}
           </p>
-          <p className="text-center text-sm text-cream/60 font-light">
+          <p className="text-center text-sm text-cream/60">
             © 2026 Jayda Scents. {t('rightsReserved')}
           </p>
         </div>

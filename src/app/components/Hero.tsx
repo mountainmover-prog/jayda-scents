@@ -72,7 +72,7 @@ export function Hero() {
             {t('heroTitle')}
           </h1>
           <p
-            className="text-base md:text-lg text-cream/95 font-body font-light mb-10 max-w-xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-cream/95 font-body mb-10 max-w-xl mx-auto leading-relaxed"
             style={{ textShadow: '0 1px 16px rgba(11,9,7,0.9)' }}
           >
             {t('heroSub')}

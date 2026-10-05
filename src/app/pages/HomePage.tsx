@@ -38,16 +38,39 @@ export function HomePage() {
                   sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw"
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
+                {/*
+                  Two layers, doing different jobs. The flat wash is light now,
+                  because its only purpose is to stop a pale bottle glaring; the
+                  photograph should still read as a photograph. The gradient is
+                  what the words sit on, and it is anchored to the bottom of the
+                  tile rather than to the picture, so the label has a dark
+                  backing whatever ends up behind it. Centring the label meant it
+                  landed on the bottles themselves, which is both where the photo
+                  is busiest and where it is lightest.
+                */}
                 <div
-                  className="absolute inset-0 transition-all duration-300 group-hover:bg-ink/60"
-                  style={{ background: 'rgba(11,9,7,0.45)' }}
+                  className="absolute inset-0 transition-all duration-300 group-hover:bg-ink/40"
+                  style={{ background: 'rgba(11,9,7,0.25)' }}
                 />
-                <div className="relative h-full flex flex-col items-center justify-center">
-                  <h3 className="font-display text-2xl text-cream tracking-wide uppercase">
+                <div
+                  className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
+                  style={{
+                    background:
+                      'linear-gradient(to top, rgba(11,9,7,0.92) 0%, rgba(11,9,7,0.72) 35%, rgba(11,9,7,0.25) 70%, rgba(11,9,7,0) 100%)',
+                  }}
+                />
+                <div className="relative h-full flex flex-col items-start justify-end p-6 md:p-7">
+                  <h3 className="font-display text-3xl md:text-4xl text-cream tracking-wide uppercase leading-none">
                     {t(cat.key)}
                   </h3>
-                  <span className="mt-2 text-[10px] tracking-[0.16em] text-gold uppercase">
+                  <span className="mt-2.5 text-xs tracking-[0.16em] text-gold uppercase">
                     {t('explore')}
+                    <span
+                      aria-hidden="true"
+                      className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
                   </span>
                 </div>
               </Link>

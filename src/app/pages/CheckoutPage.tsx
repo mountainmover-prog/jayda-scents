@@ -104,10 +104,10 @@ export function CheckoutPage() {
             <Check className="w-7 h-7 text-ink" />
           </div>
           <h2 className="font-display text-3xl text-charcoal mb-3">{t('orderSent')}</h2>
-          <p className="text-charcoal/70 font-light mb-3">
+          <p className="text-charcoal/70 mb-3">
             {t('orderSentPay', { v: formatPrice(total), n: LIPA_NAMBA })}
           </p>
-          <p className="text-sm text-muted font-light mb-8">{t('orderSentDelivery')}</p>
+          <p className="text-sm text-muted mb-8">{t('orderSentDelivery')}</p>
           <button
             onClick={() => {
               clearCart();
@@ -140,7 +140,7 @@ export function CheckoutPage() {
           <div className="lg:col-span-3 space-y-6">
             <div>
               <h2 className="font-display text-lg text-charcoal mb-1">{t('yourDetails')}</h2>
-              <p className="text-sm text-muted font-light mb-6">{t('yourDetailsSub')}</p>
+              <p className="text-sm text-muted mb-6">{t('yourDetailsSub')}</p>
             </div>
 
             <div>
@@ -183,7 +183,7 @@ export function CheckoutPage() {
               />
               {/* the delivery rule, stated before they commit */}
               <div className="mt-3 border-l-2 border-gold bg-cream/60 px-4 py-3">
-                <p className="text-xs text-charcoal/80 font-light leading-relaxed">
+                <p className="text-xs text-charcoal/80 leading-relaxed">
                   {t('deliveryPolicy')}
                 </p>
               </div>
@@ -239,7 +239,7 @@ export function CheckoutPage() {
                   </span>
                   <span className="font-display text-lg text-bronze">{formatPrice(total)}</span>
                 </div>
-                <p className="text-xs text-muted mt-2 font-light">{t('deliveryPolicyShort')}</p>
+                <p className="text-xs text-muted mt-2">{t('deliveryPolicyShort')}</p>
               </div>
 
               {configured ? (
@@ -263,8 +263,8 @@ export function CheckoutPage() {
                       {copied ? t('copied') : t('copy')}
                     </button>
                   </div>
-                  <p className="text-xs text-muted font-light mb-1">{t('anyNetwork')}</p>
-                  <p className="text-xs text-muted font-light mb-6">{t('sendFirst')}</p>
+                  <p className="text-xs text-muted mb-1">{t('anyNetwork')}</p>
+                  <p className="text-xs text-muted mb-6">{t('sendFirst')}</p>
 
                   {/* href is always present so this stays a real, focusable link;
                       an incomplete form is blocked in the handler instead. */}
@@ -282,7 +282,7 @@ export function CheckoutPage() {
                       setSent(true);
                     }}
                     className={`w-full py-4 text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 transition-colors ${
-                      detailsMissing
+detailsMissing
                         ? 'bg-rule text-muted cursor-not-allowed'
                         : 'bg-ink text-cream hover:bg-charcoal'
                     }`}
@@ -294,7 +294,7 @@ export function CheckoutPage() {
               ) : (
                 <div className="border border-rule bg-bone px-4 py-5 text-center">
                   <p className="text-sm text-charcoal mb-1">{t('notReady')}</p>
-                  <p className="text-xs text-muted font-light">{t('notReadySub')}</p>
+                  <p className="text-xs text-muted">{t('notReadySub')}</p>
                 </div>
               )}
             </div>

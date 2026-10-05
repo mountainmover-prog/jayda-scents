@@ -112,7 +112,7 @@ export function CollectionPage({
           <div>
             <h1 className="font-display text-3xl text-charcoal mb-2 uppercase">{title}</h1>
             <div className="w-12 h-px bg-gold mb-2" />
-            {intro && <p className="text-sm text-charcoal/70 font-light max-w-xl mb-2">{intro}</p>}
+            {intro && <p className="text-sm text-charcoal/70 max-w-xl mb-2">{intro}</p>}
             <p className="text-sm text-muted">
               {filtered.length} {filtered.length === 1 ? t('product') : t('products')}
             </p>

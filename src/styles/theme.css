@@ -21,6 +21,9 @@
   font-display: swap;
   src: url('/fonts/italiana-400.woff2') format('woff2');
 }
+/* Jost 300 is no longer used anywhere: body copy moved to 400 for readability.
+   The face is left declared so an older cached page still finds it, but nothing
+   requests it, so the file is never downloaded. Delete both once you are sure. */
 @font-face {
   font-family: 'Jost';
   font-style: normal;

@@ -74,7 +74,7 @@ function ProductDetail({ slug }: { slug?: string }) {
     items.length === 0 ? null : (
       <div>
         <p className="text-[10px] tracking-[0.16em] text-bronze mb-2 uppercase">{label}</p>
-        <p className="text-sm text-charcoal/70 font-light">{items.join(', ')}</p>
+        <p className="text-sm text-charcoal/70">{items.join(', ')}</p>
       </div>
     );
 
@@ -118,8 +118,11 @@ function ProductDetail({ slug }: { slug?: string }) {
                     <Stars summary={rating} />
                   </a>
                 ) : (
-                  <p className="text-muted">
-                    {t('noReviewsYet')}{' '}
+                  // Same five outlines as a rated perfume, so the page does not
+                  // change shape. Nothing is printed where the score would be;
+                  // the invitation beside them is what explains the empty row.
+                  <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <Stars summary={null} />
                     <a
                       href={reviewHref}
                       target="_blank"
@@ -139,7 +142,7 @@ function ProductDetail({ slug }: { slug?: string }) {
                   </span>
                 )}
               </p>
-              <p className="text-charcoal/70 font-light leading-relaxed">
+              <p className="text-charcoal/70 leading-relaxed">
                 {product.longDescription || product.shortDescription}
               </p>
             </div>
@@ -153,7 +156,7 @@ function ProductDetail({ slug }: { slug?: string }) {
                     onClick={() => setVariantIndex(i)}
                     disabled={v.stock === 0}
                     className={`px-5 py-2 border text-sm transition-colors ${
-                      i === variantIndex
+i === variantIndex
                         ? 'border-gold bg-gold text-ink'
                         : 'border-rule text-charcoal hover:border-gold'
                     } ${v.stock === 0 ? 'opacity-40 cursor-not-allowed line-through' : ''}`}
@@ -218,7 +221,7 @@ function ProductDetail({ slug }: { slug?: string }) {
                 <li key={`${r.name}-${r.date ?? i}`} className="py-6 border-b border-rule">
                   <Stars summary={{ average: r.rating, count: 1 }} size="sm" showCount={false} />
                   {r.quote && (
-                    <p className="mt-3 text-charcoal/80 font-light leading-relaxed">{r.quote}</p>
+                    <p className="mt-3 text-charcoal/80 leading-relaxed">{r.quote}</p>
                   )}
                   <p className="mt-3 text-[11px] tracking-[0.12em] text-muted uppercase">
                     {r.name}

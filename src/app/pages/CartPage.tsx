@@ -17,7 +17,7 @@ export function CartPage() {
         <div className="text-center">
           <ShoppingBag className="w-16 h-16 mx-auto mb-4 text-rule" />
           <h2 className="font-display text-2xl text-charcoal mb-2">{t('cartEmpty')}</h2>
-          <p className="text-muted font-light mb-6">{t('cartEmptySub')}</p>
+          <p className="text-muted mb-6">{t('cartEmptySub')}</p>
           <Link
             to="/shop"
             className="inline-block border border-gold text-charcoal px-8 py-3 text-xs tracking-[0.16em] hover:bg-gold hover:text-ink transition-colors uppercase"

@@ -16,7 +16,9 @@ export function ProductCard({ product }: ProductCardProps) {
   const from = priceFrom(product);
   const multipleSizes = product.variants.length > 1;
   const soldOut = totalStock(product) === 0;
-  // Nothing at all when unrated: an empty row of stars reads as "rated zero".
+  // Null for a perfume nobody has rated. Stars draws the outlines either way, so
+  // every card in the grid is the same height and the prices line up, and prints
+  // no figure beside them until there is a real one.
   const rating = ratingFor(product.slug);
 
   return (
@@ -49,11 +51,9 @@ export function ProductCard({ product }: ProductCardProps) {
             are not in the page, so an h3 here jumped straight from the h1 and left a
             screen reader with a broken outline. Styling unchanged. */}
         <h2 className="font-display text-lg text-charcoal mt-1">{product.name}</h2>
-        {rating && (
-          <div className="mt-1">
-            <Stars summary={rating} size="sm" />
-          </div>
-        )}
+        <div className="mt-1">
+          <Stars summary={rating} size="sm" />
+        </div>
         <p className="text-sm text-bronze mt-1 tracking-wide">
           {multipleSizes && <span className="text-muted">{t('from')} </span>}
           {formatPrice(from)}

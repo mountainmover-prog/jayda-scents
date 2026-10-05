@@ -36,7 +36,7 @@ export function FaqPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <h1 className="font-display text-3xl md:text-4xl text-charcoal uppercase">{t('faqTitle')}</h1>
         <div className="w-12 h-px bg-gold mt-3 mb-6" />
-        <p className="text-charcoal/70 font-light leading-relaxed max-w-xl">{t('faqIntro')}</p>
+        <p className="text-charcoal/70 leading-relaxed max-w-xl">{t('faqIntro')}</p>
 
         <div className="mt-14 flex flex-col gap-14">
           {faqSections.map((section) => (
@@ -53,7 +53,7 @@ export function FaqPage() {
                     className="group border-b border-rule"
                   >
                     <summary className="flex items-start justify-between gap-4 py-5 cursor-pointer list-none text-charcoal marker:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold">
-                      <span className="font-light leading-snug">{item.q[lang]}</span>
+                      <span className="leading-snug">{item.q[lang]}</span>
                       <span
                         aria-hidden="true"
                         className="mt-1 flex-none text-bronze transition-transform duration-200 group-open:rotate-45"
@@ -61,7 +61,7 @@ export function FaqPage() {
                         +
                       </span>
                     </summary>
-                    <p className="pb-6 pr-8 text-charcoal/70 font-light leading-relaxed">
+                    <p className="pb-6 pr-8 text-charcoal/70 leading-relaxed">
                       {item.a[lang]}
                     </p>
                   </details>
@@ -73,7 +73,7 @@ export function FaqPage() {
 
         <div className="mt-16 bg-cream/60 border border-rule rounded-lg p-7">
           <h2 className="font-display text-lg text-charcoal uppercase mb-2">{t('faqStillStuck')}</h2>
-          <p className="text-charcoal/70 font-light leading-relaxed mb-5">{t('faqStillStuckText')}</p>
+          <p className="text-charcoal/70 leading-relaxed mb-5">{t('faqStillStuckText')}</p>
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}`}
             target="_blank"
