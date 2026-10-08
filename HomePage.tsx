@@ -1,0 +1,110 @@
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { Link } from 'react-router';
+import { Hero } from '../components/Hero';
+import { ProductCard } from '../components/ProductCard';
+import { Testimonials } from '../components/Testimonials';
+import { featuredProducts, products } from '../data/products';
+import { useLang } from '../i18n/LanguageContext';
+import { StringKey } from '../i18n/strings';
+
+const categories: { to: string; key: StringKey; image: string }[] = [
+  { to: '/women', key: 'navWomen', image: '/images/category-women.jpg' },
+  { to: '/men', key: 'navMen', image: '/images/category-men.jpg' },
+  { to: '/unisex', key: 'navUnisex', image: '/images/category-unisex.jpg' },
+];
+
+export function HomePage() {
+  const { t } = useLang();
+  // featured flags come from the catalogue; fall back to the first few if none are set
+  const featured = (featuredProducts.length ? featuredProducts : products).slice(0, 4);
+
+  return (
+    <div className="min-h-screen bg-bone">
+      <Hero />
+
+      <section className="py-20 bg-bone">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-2xl md:text-3xl text-center text-charcoal mb-2 uppercase">
+            {t('shopBy')}
+          </h2>
+          <div className="w-12 h-px bg-gold mx-auto mb-12" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {categories.map((cat) => (
+              <Link key={cat.to} to={cat.to} className="relative h-72 rounded-lg overflow-hidden group">
+                {/* an <img> rather than a CSS background, so it can be served small and lazily */}
+                <ImageWithFallback
+                  src={cat.image}
+                  alt=""
+                  sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {/*
+                  Two layers, doing different jobs. The flat wash is light now,
+                  because its only purpose is to stop a pale bottle glaring; the
+                  photograph should still read as a photograph. The gradient is
+                  what the words sit on, and it is anchored to the bottom of the
+                  tile rather than to the picture, so the label has a dark
+                  backing whatever ends up behind it. Centring the label meant it
+                  landed on the bottles themselves, which is both where the photo
+                  is busiest and where it is lightest.
+                */}
+                <div
+                  className="absolute inset-0 transition-all duration-300 group-hover:bg-ink/40"
+                  style={{ background: 'rgba(11,9,7,0.25)' }}
+                />
+                <div
+                  className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
+                  style={{
+                    background:
+                      'linear-gradient(to top, rgba(11,9,7,0.92) 0%, rgba(11,9,7,0.72) 35%, rgba(11,9,7,0.25) 70%, rgba(11,9,7,0) 100%)',
+                  }}
+                />
+                <div className="relative h-full flex flex-col items-start justify-end p-6 md:p-7">
+                  <h3 className="font-display text-3xl md:text-4xl text-cream tracking-wide uppercase leading-none">
+                    {t(cat.key)}
+                  </h3>
+                  <span className="mt-2.5 text-xs tracking-[0.16em] text-gold uppercase">
+                    {t('explore')}
+                    <span
+                      aria-hidden="true"
+                      className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-bone">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <h2 className="font-display text-2xl md:text-3xl text-charcoal uppercase">
+                {t('featured')}
+              </h2>
+              <div className="w-12 h-px bg-gold mt-2" />
+            </div>
+            <Link
+              to="/shop"
+              className="text-[10px] tracking-[0.16em] text-charcoal hover:text-bronze transition-colors uppercase"
+            >
+              {t('viewAll')} →
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {featured.map((product, i) => (
+              <ProductCard key={product.slug} product={product} priority={i < 3} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Testimonials />
+
+    </div>
+  );
+}

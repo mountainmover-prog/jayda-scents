@@ -1,0 +1,220 @@
+/*
+ * The two brand fonts, served from this site rather than fetched from Google.
+ *
+ * The <link> to fonts.googleapis.com was the site's biggest remaining delay on
+ * a phone: PageSpeed measured 1,300 ms of "render-blocking requests", because
+ * the browser had to open a connection to a second company's server, download
+ * a stylesheet, and only then discover which font files to fetch. Same-origin
+ * files remove both the extra connection and that second step, and index.html
+ * preloads the two faces used above the fold.
+ *
+ * font-display: swap means text appears immediately in a fallback face and
+ * swaps when the real one arrives, rather than staying invisible.
+ *
+ * The files are the same ones Google serves (latin subset, woff2), about 10 KB
+ * each. To add a weight, copy its woff2 into public/fonts and add a block here.
+ */
+@font-face {
+  font-family: 'Italiana';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/italiana-400.woff2') format('woff2');
+}
+/* Jost 300 is no longer used anywhere: body copy moved to 400 for readability.
+   The face is left declared so an older cached page still finds it, but nothing
+   requests it, so the file is never downloaded. Delete both once you are sure. */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/jost-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/jost-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/jost-500.woff2') format('woff2');
+}
+
+:root {
+  --font-size: 16px;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --background: var(--bone);
+  --foreground: var(--charcoal);
+  --card: var(--bone);
+  --card-foreground: var(--charcoal);
+  --popover: var(--bone);
+  --popover-foreground: var(--charcoal);
+  --primary: var(--ink);
+  --primary-foreground: var(--cream);
+  --secondary: var(--cream);
+  --secondary-foreground: var(--ink);
+  --muted: var(--rule);
+  --muted-foreground: var(--muted);
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: var(--rule);
+  --input: transparent;
+  --input-background: var(--cream);
+  --switch-background: var(--rule);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: var(--gold);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: var(--cream);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--ink);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: var(--rule);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--rule);
+  --sidebar-ring: var(--gold);
+
+  /* Brand palette */
+  --ink: #0B0907;
+  --surface: #15110D;
+  --cream: #F5EFE4;
+  --gold: #E4A252;
+  --gold-light: #FBC56E;
+  --bone: #FAF7F2;
+  --charcoal: #1A1613;
+  --bronze: #9F6219;
+  --muted: #6B6259;
+  --rule: #E3DCD1;
+
+  /* Same palette as channel triplets. Tailwind needs these for opacity
+     modifiers: text-cream/60 compiles to rgb(var(--cream-rgb) / 0.6), and a
+     hex value in that slot makes the whole declaration invalid, so the
+     colour is silently dropped. Keep both in step. */
+  --ink-rgb: 11 9 7;
+  --surface-rgb: 21 17 13;
+  --cream-rgb: 245 239 228;
+  --gold-rgb: 228 162 82;
+  --gold-light-rgb: 251 197 110;
+  --bone-rgb: 250 247 242;
+  --charcoal-rgb: 26 22 19;
+  --bronze-rgb: 159 98 25;
+  --muted-rgb: 107 98 89;
+  --rule-rgb: 227 220 209;
+
+  /* Typography */
+  --font-display: 'Italiana', 'Times New Roman', serif;
+  --font-body: 'Jost', 'Segoe UI', system-ui, sans-serif;
+}
+
+.dark {
+  --background: var(--ink);
+  --foreground: var(--cream);
+  --card: var(--surface);
+  --card-foreground: var(--cream);
+  --popover: var(--surface);
+  --popover-foreground: var(--cream);
+  --primary: var(--cream);
+  --primary-foreground: var(--ink);
+  --secondary: var(--surface);
+  --secondary-foreground: var(--cream);
+  --muted: var(--charcoal);
+  --muted-foreground: var(--muted);
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: var(--charcoal);
+  --input: var(--charcoal);
+  --ring: var(--gold);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--cream);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: var(--ink);
+  --sidebar-accent: var(--charcoal);
+  --sidebar-accent-foreground: var(--cream);
+  --sidebar-border: var(--charcoal);
+  --sidebar-ring: var(--gold);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-normal);
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+  }
+
+  h4 {
+    font-size: var(--text-base);
+  }
+
+  label {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}
