@@ -61,6 +61,7 @@ export const en = {
   footerFollow: 'Follow us',
   footerFollowText: 'New arrivals and offers, now and then.',
   rightsReserved: 'All rights reserved.',
+  designedBy: 'Designed at Swahili Pixel',
 
   // collections
   filters: 'Filters',
@@ -217,6 +218,9 @@ export const sw: typeof en = {
   footerFollow: 'Tufuate',
   footerFollowText: 'Bidhaa mpya na ofa, mara kwa mara.',
   rightsReserved: 'Haki zote zimehifadhiwa.',
+  // A studio credit, not a sentence to translate word for word: 'na' is
+  // how you say a thing was made by someone in Swahili.
+  designedBy: 'Imeundwa na Swahili Pixel',
 
   filters: 'Vichujio',
   filterType: 'Aina',

@@ -72,10 +72,12 @@ function TestimonialCard({ item }: { item: Testimonial }) {
   const long = item.quote.length > CLAMP_ABOVE;
 
   // The stars belong to the person who wrote the words, not to a product: this
-  // is the rating they themselves gave, averaged over everything they rated.
+  // is the rating they themselves gave, averaged over the perfumes this quote is
+  // about. Passing the slugs matters because three different customers are
+  // called Rachel; on the name alone this card would show all of their ratings.
   // Null for anyone who sent kind words but never gave a number, and then the
   // card simply leads with the quote.
-  const rating = ratingByCustomer(item.name);
+  const rating = ratingByCustomer(item.name, item.slugs);
 
   // Names come from the catalogue, never from the free text, so a link can
   // never name one perfume and open another. A slug that no longer matches a

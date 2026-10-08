@@ -152,6 +152,9 @@ export const reviews: Review[] = [
     date: '2026-09-28',
     source: 'whatsapp',
   },
+  // NOTE: the Rachel on Suger Rush below is not the Rachel on Vanilla Voyage
+  // and Yum Yum above. Three different customers share the first name. Do not
+  // merge these rows, and read ratingByCustomer before adding another.
   // The remaining 21 perfumes, one customer each, told to us 8 Oct 2026. Every
   // catalogue product now carries at least one rating. Words kept as sent; the
   // only change is 'cant' to 'can\'t' and a trailing space trimmed off a name.
@@ -311,14 +314,22 @@ export interface RatingSummary {
 }
 
 /**
- * The stars one named customer gave, across every product they rated.
+ * The stars one named customer gave, across the products they rated.
  *
- * Used by the quotes on the home page, where the stars belong to the person
- * who wrote the words rather than to a product. Null when that customer gave
- * no rating, so their card shows the quote alone rather than an empty row.
+ * Used by the quotes on the home page, where the stars belong to the person who
+ * wrote the words rather than to a product. Null when that customer gave no
+ * rating, so their card shows the quote alone rather than an empty row.
+ *
+ * `slugs` is what keeps two customers with the same first name apart. There are
+ * three different Rachels in this list, and matching on the name alone would
+ * pool all their ratings into whichever one of them wrote a quote. Passing the
+ * perfumes that quote is about narrows it to the rows that can only be hers.
+ * Everyone is credited by first name, so this will happen again.
  */
-export function ratingByCustomer(name: string): RatingSummary | null {
-  const rs = reviews.filter((r) => r.name === name);
+export function ratingByCustomer(name: string, slugs?: string[]): RatingSummary | null {
+  const rs = reviews.filter(
+    (r) => r.name === name && (!slugs || slugs.length === 0 || slugs.includes(r.slug)),
+  );
   if (rs.length === 0) return null;
   const average = rs.reduce((n, r) => n + r.rating, 0) / rs.length;
   return { average: Math.round(average * 10) / 10, count: rs.length };

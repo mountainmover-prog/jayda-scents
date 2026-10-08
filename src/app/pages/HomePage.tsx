@@ -96,8 +96,8 @@ export function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {featured.map((product) => (
-              <ProductCard key={product.slug} product={product} />
+            {featured.map((product, i) => (
+              <ProductCard key={product.slug} product={product} priority={i < 3} />
             ))}
           </div>
         </div>

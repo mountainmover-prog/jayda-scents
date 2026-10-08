@@ -104,7 +104,9 @@ function ProductDetail({ slug }: { slug?: string }) {
             <div className="mb-8">
               <div className="flex items-center gap-2 mb-2">
                 <p className="text-[10px] text-muted tracking-[0.16em] uppercase">{product.brand}</p>
-                <span className="text-rule">·</span>
+                {/* Decoration, so a drawn shape rather than the character. Same
+                    reasoning as the product card. */}
+                <span aria-hidden="true" className="w-[3px] h-[3px] rounded-full bg-rule shrink-0" />
                 <p className="text-[10px] text-bronze tracking-[0.16em] uppercase">
                   {formatType(product.type, lang)}
                 </p>

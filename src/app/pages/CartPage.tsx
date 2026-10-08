@@ -16,7 +16,9 @@ export function CartPage() {
       <div className="min-h-screen bg-bone flex items-center justify-center">
         <div className="text-center">
           <ShoppingBag className="w-16 h-16 mx-auto mb-4 text-rule" />
-          <h2 className="font-display text-2xl text-charcoal mb-2">{t('cartEmpty')}</h2>
+          {/* h1: this is the whole page when the bag is empty, and a page with no
+              top-level heading leaves a screen reader with nothing to anchor to. */}
+          <h1 className="font-display text-2xl text-charcoal mb-2">{t('cartEmpty')}</h1>
           <p className="text-muted mb-6">{t('cartEmptySub')}</p>
           <Link
             to="/shop"
@@ -62,7 +64,9 @@ export function CartPage() {
                         <p className="text-[10px] text-muted tracking-[0.16em] mb-1 uppercase">
                           {product.brand}
                         </p>
-                        <h3 className="font-display text-base text-charcoal mb-1">{product.name}</h3>
+                        {/* h2: each line is a section of the cart, alongside the order summary.
+                            At h3 the page went h1 straight to h3. */}
+                        <h2 className="font-display text-base text-charcoal mb-1">{product.name}</h2>
                         <p className="text-xs text-muted">
                           {variant.sizeLabel} · {formatPrice(variant.priceTzs)}
                         </p>

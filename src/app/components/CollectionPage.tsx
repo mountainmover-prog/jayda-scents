@@ -41,13 +41,26 @@ function Radio({
 }) {
   return (
     <label className="flex items-center gap-2 cursor-pointer">
+      {/*
+        Drawn rather than left to the browser. accent-gold only tints the dot
+        inside a native radio; the ring around it stays whatever dark colour the
+        browser picked, which is the hard black outline that looked out of place
+        against everything else on the page. appearance-none drops the native
+        control and the border below replaces it: a thin rule-coloured circle
+        when it is not selected, and a bronze one with a bone centre when it is,
+        made from a thick border rather than a second element.
+
+        The focus ring is explicit. Removing the native appearance would
+        otherwise take the keyboard outline with it, and these filters are
+        reachable by tab.
+      */}
       <input
         type="radio"
         name={name}
         value={value}
         checked={checked}
         onChange={(e) => onChange(e.target.value)}
-        className="w-4 h-4 accent-gold"
+        className="appearance-none w-[15px] h-[15px] shrink-0 rounded-full border border-rule bg-bone transition-colors cursor-pointer checked:border-[5px] checked:border-bronze hover:border-bronze/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze"
       />
       <span className={`text-sm text-charcoal ${capitalise ? 'capitalize' : ''}`}>{label}</span>
     </label>
@@ -206,8 +219,10 @@ export function CollectionPage({
           <div className="flex-1">
             {filtered.length > 0 ? (
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                {filtered.map((p) => (
-                  <ProductCard key={p.slug} product={p} />
+                {filtered.map((p, i) => (
+                  // The first row is on screen immediately, so it loads eagerly;
+                  // everything after it stays lazy.
+                  <ProductCard key={p.slug} product={p} priority={i < 3} />
                 ))}
               </div>
             ) : (

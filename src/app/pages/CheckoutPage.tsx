@@ -35,7 +35,8 @@ export function CheckoutPage() {
       <div className="min-h-screen bg-bone flex items-center justify-center">
         <div className="text-center">
           <ShoppingBag className="w-16 h-16 mx-auto mb-4 text-rule" />
-          <h2 className="font-display text-2xl text-charcoal mb-2">{t('nothingToCheckout')}</h2>
+          {/* h1: the only heading on the page in this state. */}
+          <h1 className="font-display text-2xl text-charcoal mb-2">{t('nothingToCheckout')}</h1>
           <Link
             to="/shop"
             className="inline-block border border-gold text-charcoal px-8 py-3 text-xs tracking-[0.16em] hover:bg-gold hover:text-ink transition-colors uppercase mt-4"
@@ -103,7 +104,8 @@ export function CheckoutPage() {
           <div className="w-14 h-14 rounded-full bg-gold flex items-center justify-center mx-auto mb-6">
             <Check className="w-7 h-7 text-ink" />
           </div>
-          <h2 className="font-display text-3xl text-charcoal mb-3">{t('orderSent')}</h2>
+          {/* h1: the confirmation replaces the whole checkout, so it is the page title. */}
+          <h1 className="font-display text-3xl text-charcoal mb-3">{t('orderSent')}</h1>
           <p className="text-charcoal/70 mb-3">
             {t('orderSentPay', { v: formatPrice(total), n: LIPA_NAMBA })}
           </p>
