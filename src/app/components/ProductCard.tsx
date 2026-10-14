@@ -25,9 +25,17 @@ interface ProductCardProps {
    * lazy loading is there to prevent.
    */
   priority?: boolean;
+  /**
+   * Heading level for the product name. h2 on /shop and the collection pages,
+   * where the grid sits straight under the page's h1. h3 wherever the grid
+   * sits under a section h2 (Featured on the home page, You may also like on a
+   * product page), so the outline nests instead of running flat.
+   */
+  headingLevel?: 'h2' | 'h3';
 }
 
-export function ProductCard({ product, priority = false }: ProductCardProps) {
+export function ProductCard({ product, priority = false, headingLevel = 'h2' }: ProductCardProps) {
+  const Heading = headingLevel;
   const { t, lang } = useLang();
   const from = priceFrom(product);
   const multipleSizes = product.variants.length > 1;
@@ -71,10 +79,10 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             {formatType(product.type, lang)}
           </p>
         </div>
-        {/* h2, not h3: on a phone the filter headings are behind the Filters button and
-            are not in the page, so an h3 here jumped straight from the h1 and left a
-            screen reader with a broken outline. Styling unchanged. */}
-        <h2 className="font-display text-lg text-charcoal mt-1">{product.name}</h2>
+        {/* h2 by default: on a phone the filter headings are behind the Filters button
+            and are not in the page, so an h3 here jumped straight from the h1 and left
+            a screen reader with a broken outline. Styling is the same at either level. */}
+        <Heading className="font-display text-lg text-charcoal mt-1">{product.name}</Heading>
         <div className="mt-1">
           <Stars summary={rating} size="sm" />
         </div>

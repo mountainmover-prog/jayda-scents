@@ -17,6 +17,13 @@ export const en = {
   cart: 'Cart',
 
   // hero
+  // The page's one h1, and the line Google reads first. It names what the shop
+  // is and where, in the words people search with. Dar es Salaam leads because
+  // it is the larger market. Keep the city order the same everywhere: the
+  // og-image, the Google Business Profile and the social bios all match it.
+  // No "original" or "authentic": not every bottle on the shelf could carry it.
+  heroH1: 'Online Perfume Shop in Dar es Salaam & Zanzibar',
+  // The large display line under it. Brand voice, not a heading.
   heroTitle: 'Discover your signature scent',
   // Named brands replace "perfume oils and body mists": the shop stocks neither,
   // so two of the three things the first sentence promised did not exist. No
@@ -29,9 +36,10 @@ export const en = {
   heroCta: 'Browse all {n} fragrances',
 
   // home
-  shopBy: 'Shop by',
+  shopBy: 'Perfumes for women, men and everyone',
   explore: 'Explore',
-  featured: 'Featured',
+  // "and more" keeps this true whichever products carry the featured flag
+  featured: 'Featured perfumes from Lattafa, Afnan, Armaf and more',
   viewAll: 'View all',
   footerAbout: 'About',
   // Same correction as heroSub: the shop stocks no perfume oils and no body
@@ -54,7 +62,7 @@ export const en = {
   faqStillStuckText:
     'Message us and we will answer. We confirm every order on WhatsApp anyway, so nothing is too small to ask.',
   faqAskOnWhatsApp: 'Ask us on WhatsApp',
-  testimonialsTitle: 'What customers say',
+  testimonialsTitle: 'What customers say about Jayda Scents',
   testimonialsSub: 'Their words, exactly as they sent them. Published with permission.',
   readMore: 'Read more',
   readLess: 'Show less',
@@ -185,13 +193,14 @@ export const sw: typeof en = {
   menu: 'Menyu',
   cart: 'Kikapu',
 
+  heroH1: 'Duka la manukato mtandaoni Dar es Salaam na Zanzibar',
   heroTitle: 'Tafuta harufu yako',
   heroSub: 'Eau de parfum kutoka Lattafa, Afnan, Armaf na nyingine, zilizochaguliwa kwa kudumu na kwa bei nzuri.',
   heroCta: 'Tazama manukato yote {n}',
 
-  shopBy: 'Nunua kwa',
+  shopBy: 'Manukato ya wanawake, wanaume na wote',
   explore: 'Angalia',
-  featured: 'Zilizochaguliwa',
+  featured: 'Manukato yaliyochaguliwa kutoka Lattafa, Afnan, Armaf na mengine',
   viewAll: 'Ona zote',
   footerAbout: 'Kuhusu',
   footerAboutText:
@@ -211,7 +220,7 @@ export const sw: typeof en = {
   faqStillStuckText:
     'Tutumie ujumbe na tutakujibu. Kila oda tunaithibitisha kwa WhatsApp, hivyo hakuna swali dogo sana.',
   faqAskOnWhatsApp: 'Tuulize WhatsApp',
-  testimonialsTitle: 'Maoni ya wateja',
+  testimonialsTitle: 'Maoni ya wateja kuhusu Jayda Scents',
   testimonialsSub: 'Maneno yao wenyewe, kama walivyotuandikia. Yamewekwa kwa ruhusa yao.',
   readMore: 'Soma zaidi',
   readLess: 'Onyesha kidogo',
