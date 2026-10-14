@@ -65,12 +65,27 @@ export function Hero() {
       />
       <div className="relative h-full flex items-center justify-center text-center px-4">
         <div className="max-w-3xl">
+          {/*
+            Two lines, two jobs. The h1 is the small gold line on top: it says
+            what the shop is and where, which is what Google and a first-time
+            visitor need. The big Italiana line is brand voice, so it is a <p>
+            styled exactly as the old h1 was.
+
+            Gold on ink is 9.1:1, and letterspaced small caps is one of the
+            places the brand rules allow gold.
+          */}
           <h1
+            className="font-body font-normal text-xs md:text-sm text-gold tracking-[0.16em] uppercase leading-relaxed mb-5 max-w-md md:max-w-none mx-auto [text-wrap:balance]"
+            style={{ textShadow: '0 1px 12px rgba(11,9,7,0.9)' }}
+          >
+            {t('heroH1')}
+          </h1>
+          <p
             className="font-display text-4xl md:text-6xl text-cream tracking-wide mb-6 leading-[1.15] uppercase"
             style={{ textShadow: '0 2px 20px rgba(11,9,7,0.8)' }}
           >
             {t('heroTitle')}
-          </h1>
+          </p>
           <p
             className="text-base md:text-lg text-cream/95 font-body mb-10 max-w-xl mx-auto leading-relaxed"
             style={{ textShadow: '0 1px 16px rgba(11,9,7,0.9)' }}

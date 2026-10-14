@@ -252,7 +252,7 @@ i === variantIndex
             <div className="w-12 h-px bg-gold mb-8" />
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6">
               {suggestions.map((p) => (
-                <ProductCard key={p.slug} product={p} />
+                <ProductCard key={p.slug} product={p} headingLevel="h3" />
               ))}
             </div>
           </section>
