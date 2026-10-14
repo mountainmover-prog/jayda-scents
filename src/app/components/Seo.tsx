@@ -23,7 +23,7 @@ import { useLang } from '../i18n/LanguageContext';
 const SHOP = 'Jayda Scents';
 
 const TITLES: Record<string, { en: string; sw: string }> = {
-  '/': { en: `${SHOP} | Eau de parfum in Zanzibar and Dar es Salaam`, sw: `${SHOP} | Manukato Zanzibar na Dar es Salaam` },
+  '/': { en: `${SHOP} | Eau de parfum in Dar es Salaam and Zanzibar`, sw: `${SHOP} | Manukato Dar es Salaam na Zanzibar` },
   '/shop': { en: `All fragrances | ${SHOP}`, sw: `Manukato yote | ${SHOP}` },
   '/women': { en: `Women's fragrances | ${SHOP}`, sw: `Manukato ya wanawake | ${SHOP}` },
   '/men': { en: `Men's fragrances | ${SHOP}`, sw: `Manukato ya wanaume | ${SHOP}` },
